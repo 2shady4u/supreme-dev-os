@@ -1,0 +1,156 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://graphics/bootloader/logo.png" type="Texture" id=1]
+[ext_resource path="res://src/Boot.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0.545098, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="Boot" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HB" type="HBoxContainer" parent="PanelContainer"]
+margin_right = 1024.0
+margin_bottom = 576.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="PanelContainer/HB"]
+margin_right = 506.0
+margin_bottom = 576.0
+size_flags_horizontal = 3
+
+[node name="VB" type="VBoxContainer" parent="PanelContainer/HB/VB"]
+margin_right = 506.0
+margin_bottom = 188.0
+size_flags_vertical = 3
+custom_constants/separation = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HB/VB/VB"]
+margin_right = 506.0
+margin_bottom = 128.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PanelContainer/HB/VB/VB/HBoxContainer"]
+margin_left = 112.0
+margin_top = 48.0
+margin_right = 262.0
+margin_bottom = 79.0
+text = "Supreme Dev OS
+AMANAS BOOTLOADER"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HB/VB/VB/HBoxContainer"]
+margin_left = 266.0
+margin_right = 394.0
+margin_bottom = 128.0
+texture = ExtResource( 1 )
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="PanelContainer/HB/VB/VB"]
+margin_top = 152.0
+margin_right = 506.0
+margin_bottom = 183.0
+text = "Welcome ever-faithful Pantheon employee!
+Please input your employee ID to service this device:"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/HB/VB"]
+margin_top = 192.0
+margin_right = 506.0
+margin_bottom = 196.0
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer/HB/VB"]
+margin_top = 200.0
+margin_right = 506.0
+margin_bottom = 576.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_styles/panel = SubResource( 2 )
+tabs_visible = false
+
+[node name="VB" type="VBoxContainer" parent="PanelContainer/HB/VB/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HB/VB/TabContainer/VB"]
+margin_top = 138.0
+margin_right = 506.0
+margin_bottom = 162.0
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/HB/VB/TabContainer/VB/HBoxContainer"]
+margin_left = 142.0
+margin_top = 5.0
+margin_right = 231.0
+margin_bottom = 19.0
+text = "EMPLOYEE ID:"
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/HB/VB/TabContainer/VB/HBoxContainer"]
+margin_left = 235.0
+margin_right = 363.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="Button" type="Button" parent="PanelContainer/HB/VB/TabContainer/VB"]
+margin_left = 172.0
+margin_top = 174.0
+margin_right = 333.0
+margin_bottom = 194.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 4
+text = "Certify bootloader login"
+
+[node name="Label" type="Label" parent="PanelContainer/HB/VB/TabContainer/VB"]
+margin_top = 206.0
+margin_right = 506.0
+margin_bottom = 237.0
+text = "DISCLAIMER: If you are not Pantheon Employee
+ please press `R` to resume the boot sequence."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/HB"]
+margin_left = 510.0
+margin_right = 514.0
+margin_bottom = 576.0
+
+[node name="SC" type="ScrollContainer" parent="PanelContainer/HB"]
+margin_left = 518.0
+margin_right = 1024.0
+margin_bottom = 576.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="PanelContainer/HB/SC"]
+margin_right = 506.0
+margin_bottom = 576.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

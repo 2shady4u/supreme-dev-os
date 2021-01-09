@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/terminal/TerminalHeader.gd" type="Script" id=1]
+
+[node name="TerminalHeader" type="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 73.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1024.0
+margin_bottom = 65.0
+text = "
+Supreme Dev OS (v5.01) - TERMINAL
+New here? Type `help` to get a handy list of commands!
+"
+align = 1
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_left = 448.0
+margin_top = 69.0
+margin_right = 576.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 4

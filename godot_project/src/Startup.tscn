@@ -1,0 +1,137 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://graphics/backgrounds/temp_background.jpg" type="Texture" id=1]
+[ext_resource path="res://src/Startup.gd" type="Script" id=2]
+[ext_resource path="res://graphics/startup/border.png" type="Texture" id=3]
+[ext_resource path="res://graphics/startup/portrait.png" type="Texture" id=4]
+[ext_resource path="res://graphics/startup/loading.png" type="Texture" id=5]
+
+[node name="Startup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+
+[node name="VB" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 24
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VB"]
+margin_top = 134.0
+margin_right = 1024.0
+margin_bottom = 165.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Supreme Dev OS
+version 0.5"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VB"]
+margin_top = 189.0
+margin_right = 1024.0
+margin_bottom = 335.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VB/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="VB/VBoxContainer/TextureRect"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="VB/VBoxContainer"]
+margin_top = 132.0
+margin_right = 1024.0
+margin_bottom = 146.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Andrew Pantheon"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LogInButton" type="Button" parent="VB"]
+margin_left = 448.0
+margin_top = 359.0
+margin_right = 576.0
+margin_bottom = 379.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 4
+text = "Log In"
+
+[node name="Label2" type="Label" parent="VB"]
+margin_top = 403.0
+margin_right = 1024.0
+margin_bottom = 417.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "by Pantheon Inc."
+align = 1
+
+[node name="LoadingControl" type="Control" parent="VB"]
+margin_top = 441.0
+margin_right = 1024.0
+margin_bottom = 441.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="VB/LoadingControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VB/LoadingControl/VB"]
+margin_right = 1024.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+rect_pivot_offset = Vector2( 512, 32 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VB/LoadingControl/VB"]
+margin_top = 88.0
+margin_right = 1024.0
+margin_bottom = 102.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Preparing graphical environment..."
+align = 1
+valign = 1
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

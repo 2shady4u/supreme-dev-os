@@ -1,0 +1,9 @@
+{
+    "programs": [
+        {"id": "godot"},
+        {"id": "terminal"},
+        {"id": "supreme_dev_os"},
+        {"id": "barracuda"},
+        {"id": "pantheon_drm_certifier"}
+    ]
+}
