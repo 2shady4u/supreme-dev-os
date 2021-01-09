@@ -111,10 +111,12 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="VB/LoadingControl/VB"]
-margin_right = 1024.0
+margin_left = 480.0
+margin_right = 544.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
-rect_pivot_offset = Vector2( 512, 32 )
+rect_pivot_offset = Vector2( 32, 32 )
+size_flags_horizontal = 4
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
