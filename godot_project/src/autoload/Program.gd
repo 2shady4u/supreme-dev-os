@@ -18,7 +18,7 @@ func check_launch_dependencies() -> bool:
 		if not dependency.has("id"):
 			push_error("Depency without an id!")
 			continue
-		var program : classProgram = State.get_program_by_id(dependency.id)
+		var program : Reference = State.get_program_by_id(dependency.id)
 		var minimum_version = dependency.minimum_version
 
 		if program.version < minimum_version:
