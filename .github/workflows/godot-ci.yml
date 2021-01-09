@@ -1,0 +1,44 @@
+name: "godot-ci export"
+on: push
+
+env:
+  GODOT_VERSION: 3.2.2
+  EXPORT_NAME: supreme-dev-os
+
+jobs:
+  export-web:
+    name: Web Export
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:3.2.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
+      - name: Web Build
+        run: |
+          mkdir ./$EXPORT_NAME
+          rsync -Rr . ./$EXPORT_NAME
+          mkdir -v -p build/web
+          cd $EXPORT_NAME
+          cd godot_project
+          godot -v --export "HTML5" ../../build/web/index.html
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: web
+          path: build/web
+      - name: Butler Upload
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: web
+          ITCH_GAME: supreme-dev-os
+          ITCH_USER: 2shady4u
+          PACKAGE: build/web
