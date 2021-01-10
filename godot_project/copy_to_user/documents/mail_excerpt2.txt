@@ -48,7 +48,7 @@ Hi Hanna,
 
 I do hope this doesn't happen consistently, but I think that the drivers were corrupted during installation.
 You'll probably have to re-install them by going into the boot menu.
-Accessing the boot screen can be done by pressing the restart button for about 6-8 seconds in the login screen (or the crash screen).
+Accessing the boot screen can be done by pressing the restart key for about 6-8 seconds in the login screen (or the crash screen).
 
 You'll need a Pantheon id and password to login.
 I'll send you those in an encrypted mail cause Supreme Dev OS has enough problems without hackers messing things up as well.

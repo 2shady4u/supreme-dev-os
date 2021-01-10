@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://graphics/blue_cross.png" type="Texture" id=1]
 [ext_resource path="res://src/Failure.gd" type="Script" id=2]
+[ext_resource path="res://resources/failure2.ogg" type="AudioStream" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -93,3 +94,6 @@ valign = 1
 
 [node name="BootTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

@@ -3,13 +3,14 @@ extends Control
 const BOOT_INTERVAL := 6.0
 
 func _ready():
+	var _error := $BootTimer.connect("timeout", self, "_on_boot_timer_timeout")
+	State.add_crash_log()
+
 	$VBoxContainer/PanelContainer/FailureLabel.text = Flow.failure_message
 
 	$BootTimer.wait_time = BOOT_INTERVAL
 
-	State.add_crash_log()
-
-	var _error := $BootTimer.connect("timeout", self, "_on_boot_timer_timeout")
+	$AudioStreamPlayer.play()
 
 func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("restart"):
