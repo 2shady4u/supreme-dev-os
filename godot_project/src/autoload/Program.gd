@@ -3,6 +3,8 @@ extends Reference
 
 var id := ""
 var version := 0.0
+# Some drivers can be uninstalled by still need to show up!
+var is_installed := true
 
 var context : Dictionary setget set_context
 func set_context(value : Dictionary) -> void:
@@ -21,7 +23,7 @@ func check_launch_dependencies() -> bool:
 		var program : Reference = State.get_program_by_id(dependency.id)
 		var minimum_version = dependency.minimum_version
 
-		if program.version < minimum_version:
+		if program.version < minimum_version and program.is_installed:
 			# Also add the crash message to the flow!
 			Flow.failure_message = dependency.failure_message
 			return false
@@ -71,3 +73,7 @@ func get_launch_dependencies() -> Array:
 var hidden_commands : Array setget , get_hidden_commands
 func get_hidden_commands() -> Array:
 	return Flow.get_program_value(id, "hidden_commands", [])
+
+var can_be_uninstalled : Array setget , get_can_be_uninstalled
+func get_can_be_uninstalled() -> Array:
+	return Flow.get_program_value(id, "can_be_uninstalled", false)

@@ -32,7 +32,7 @@ var _state_dict := {
 		"state": STATE.BOOT
 		},
 	"graphics_failure": {
-		"packed_scene": preload("res://src/Boot.tscn"),
+		"packed_scene": preload("res://src/GraphicsFailure.tscn"),
 		"state": STATE.BOOT
 		}
 	}
@@ -161,6 +161,7 @@ const PROGRAM_SETTINGS := {
 		"description": "High-Fidelity Graphics Driver",
 		"slogan": "At the vanguard of modern graphics!",
 		"icon_texture": preload("res://graphics/program_icons/barracuda.png"),
+		"can_be_uninstalled" : true
 	},
 	"supreme_dev_os": {
 		"default_version": 5.65,
@@ -190,7 +191,8 @@ const PROGRAM_SETTINGS := {
 		"show_on_boot": true,
 		"description": "State-of-the-Art AI for companionship during game development",
 		"icon_texture": preload("res://graphics/program_icons/brendai.png"),
-		"slogan": "Your companion till the very end"
+		"slogan": "Your companion till the very end",
+		"can_be_uninstalled" : true
 	},
 	"tic_tac_toe": {
 		"extension": "exe",
@@ -203,6 +205,11 @@ const PROGRAM_SETTINGS := {
 				"id": "pantheon_drm_certifier",
 				"minimum_version": 1.3,
 				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
+			},
+			{
+				"id": "brendai",
+				"minimum_version": 0.0,
+				"failure_message": "Launch dependency `brendai` could not be satisfied!\nProgram `Tic-Tac-Toe.exe` requires minimum version 3.12"
 			}
 		],
 	},

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://graphics/backgrounds/temp_background.jpg" type="Texture" id=1]
 [ext_resource path="res://src/Startup.gd" type="Script" id=2]
 [ext_resource path="res://graphics/startup/border.png" type="Texture" id=3]
 [ext_resource path="res://graphics/startup/portrait_john.png" type="Texture" id=4]
 [ext_resource path="res://graphics/startup/loading.png" type="Texture" id=5]
+[ext_resource path="res://graphics/logo.png" type="Texture" id=6]
 
 [node name="Startup" type="Control"]
 anchor_right = 1.0
@@ -20,6 +21,9 @@ anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VB" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -30,19 +34,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="VB"]
-margin_top = 134.0
+[node name="Control" type="Control" parent="VB"]
+margin_top = 38.0
 margin_right = 1024.0
-margin_bottom = 165.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 128, 128 )
+
+[node name="TextureRect" type="TextureRect" parent="VB/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -96.0
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 192, 192 )
+size_flags_horizontal = 4
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VB"]
+visible = false
+margin_top = 426.0
+margin_right = 1024.0
+margin_bottom = 457.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Supreme Dev OS
 version 0.5"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VB"]
-margin_top = 189.0
+margin_top = 190.0
 margin_right = 1024.0
-margin_bottom = 335.0
+margin_bottom = 336.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,25 +108,26 @@ __meta__ = {
 
 [node name="LogInButton" type="Button" parent="VB"]
 margin_left = 448.0
-margin_top = 359.0
+margin_top = 360.0
 margin_right = 576.0
-margin_bottom = 379.0
+margin_bottom = 380.0
 rect_min_size = Vector2( 128, 0 )
 size_flags_horizontal = 4
 text = "Log In"
 
 [node name="Label2" type="Label" parent="VB"]
-margin_top = 403.0
+margin_top = 404.0
 margin_right = 1024.0
-margin_bottom = 417.0
+margin_bottom = 418.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "by Pantheon Inc."
+text = "a Pantheon Inc. product"
 align = 1
 
 [node name="LoadingControl" type="Control" parent="VB"]
-margin_top = 441.0
+margin_top = 442.0
 margin_right = 1024.0
-margin_bottom = 441.0
+margin_bottom = 538.0
+rect_min_size = Vector2( 0, 96 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
