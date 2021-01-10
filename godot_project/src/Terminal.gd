@@ -168,6 +168,11 @@ func update_program(parameters : Array = []):
 		label.text = "Program with `program_id` = {0} is not installed on this device".format([program_id])
 		label.autowrap = true
 		$SC/VB.add_child(label)
+	elif State.get_program_by_id(program_id).show_on_boot:
+		var label := Label.new()
+		label.text = "Terminal failed to update `{0}`, Program is driver and should be updated at boot time.".format([program_id])
+		label.autowrap = true
+		$SC/VB.add_child(label)
 	else:
 		block_terminal = true
 		var update_label = SCENE_UPDATE_LABEL.instance()
