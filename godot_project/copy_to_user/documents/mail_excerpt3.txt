@@ -1,0 +1,23 @@
+-------------------
+hanna_moranes93@wamail.com
+sent at 8th of January 2021
+Subject: RE:RE:RE: Release candidate QA
+-------------------
+
+Hey Lucas,
+
+NOTE FOR NEXT TIME:
+Encrypt your files in a less unusual format!
+I first had to find and install the necessary decryption software (whose name you didn't tell me btw!) and then I had to decrypt your file.
+ALL THIS WHILE THE OS IS CRASHING RANDOMLY EVERY FEW MINUTES!!!
+
+*angry rant over*
+
+Anyway, after a few crashes I figured it out and Supreme Dev OS is finally running...
+
+I'll get back to you once I do some actual testing!
+
+Toodles,
+Hana
+
+PS: Maybe also better if you add the encryptor to the blocklist to avoid users unnecessarily tampering with encrypted files?

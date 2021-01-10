@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tic_tac_toe_comment3.ogg-fa8fb254880986d201bf77f185563d7b.oggstr"
+
+[deps]
+
+source_file="res://resources/brenda/tic_tac_toe/tic_tac_toe_comment3.ogg"
+dest_files=[ "res://.import/tic_tac_toe_comment3.ogg-fa8fb254880986d201bf77f185563d7b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

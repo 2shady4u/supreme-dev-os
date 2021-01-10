@@ -22,10 +22,10 @@ func _ready():
 		_error = $VB/TextureButton.connect("mouse_exited", self, "_on_texture_button_mouse_exited")
 
 func update_program():
-	var program := self.program
-	if program:
-		$VB/Label.text = program.name + "." + program.extension
-		$VB/TextureButton.texture_normal = program.icon_texture
+	var local_program := self.program
+	if local_program:
+		$VB/Label.text = local_program.name + "." + local_program.extension
+		$VB/TextureButton.texture_normal = local_program.icon_texture
 
 func _input(event : InputEvent):
 	if mouse_inside and event.is_action_pressed("LMB"):

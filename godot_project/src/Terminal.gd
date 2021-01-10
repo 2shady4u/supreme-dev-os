@@ -4,6 +4,7 @@ const SCENE_TERMINAL_EDIT := preload("res://src/terminal/TerminalEdit.tscn")
 const SCENE_TERMINAL_HEADER := preload("res://src/terminal/TerminalHeader.tscn")
 
 const SCENE_UPDATE_LABEL := preload("res://src/terminal/UpdateLabel.tscn")
+const SCENE_INSTALL_LABEL := preload("res://src/terminal/InstallLabel.tscn")
 
 var terminal_edit : HBoxContainer = null
 
@@ -11,6 +12,7 @@ var block_terminal := false
 
 func _ready():
 	var _error := connect("about_to_show", self, "_on_about_to_show")
+	_error = $AudioStreamPlayer.connect("finished", self, "_on_audio_stream_finished")
 
 	reset_terminal()
 	add_terminal_edit()
@@ -88,16 +90,32 @@ var terminal_commands := {
 		"show_on_help": false,
 		"callback": funcref(self, "show_service_number")
 	},
+	"list": {
+		"description": "List all installed programs and their versions",
+		"callback": funcref(self, "list_programs")
+	},
 	"update": {
 		"description": "Update program to latest version",
 		"callback": funcref(self, "update_program"),
 		"number_of_parameters": 1
 	},
-	"list": {
-		"description": "List all installed programs and their versions",
-		"callback": funcref(self, "list_programs")
-	}
+	"install": {
+		"description": "Install a certified program from the Pantheon Mainframe",
+		"callback": funcref(self, "install_program"),
+		"number_of_parameters": 1
+	},
+	"compliment": {
+		"description": "Receive a well-deserved compliment from BrendAI",
+		"callback": funcref(self, "play_compliment")
+	},
+	"exit": {
+		"description": "Exit this command terminal",
+		"callback": funcref(self, "exit_terminal")
+	},
 }
+
+func exit_terminal():
+	hide()
 
 func terminal_failure():
 	var label = Label.new()
@@ -129,9 +147,39 @@ func update_program(parameters : Array = []):
 
 		$SC/VB.add_child(update_label)
 
+func install_program(parameters : Array = []):
+	var program_id := ""
+	if not parameters.empty():
+		program_id = parameters[0]
+
+	if program_id.empty():
+		var label := Label.new()
+		label.text = "Command `install` requires single space separated parameter `program_id`"
+		$SC/VB.add_child(label)
+	elif program_id in State.programs.keys():
+		var label := Label.new()
+		label.text = "Program with `program_id` = {0} is already installed on this device".format([program_id])
+		$SC/VB.add_child(label)
+	else:
+		block_terminal = true
+		var install_label = SCENE_INSTALL_LABEL.instance()
+		install_label.connect("install_completed", self, "_on_install_completed", [], CONNECT_ONESHOT)
+
+		install_label.program_id = program_id
+
+		$SC/VB.add_child(install_label)
+
 func _on_update_completed(update_text : String):
 	var label := Label.new()
 	label.text = update_text
+	$SC/VB.add_child(label)
+
+	block_terminal = false
+	add_terminal_edit()
+
+func _on_install_completed(install_text : String):
+	var label := Label.new()
+	label.text = install_text
 	$SC/VB.add_child(label)
 
 	block_terminal = false
@@ -143,6 +191,17 @@ func show_service_number():
 	label.text = "A5U8CC"
 
 	$SC/VB.add_child(label)
+
+func play_compliment():
+	block_terminal = true
+
+	var index = randi() % COMPLIMENTS.size()
+	$AudioStreamPlayer.stream = COMPLIMENTS[index]
+	$AudioStreamPlayer.play()
+
+func _on_audio_stream_finished():
+	block_terminal = false
+	add_terminal_edit()
 
 func show_help():
 	for key in terminal_commands.keys():
@@ -160,3 +219,11 @@ func list_programs():
 			label.text = "`{0}`\nversion: {1}\ndescription: {2}\n".format([program.id, program.version, program.description])
 
 			$SC/VB.add_child(label)
+
+const COMPLIMENTS := [
+	preload("res://resources/brenda/compliments/compliment1.ogg"),
+	preload("res://resources/brenda/compliments/compliment2.ogg"),
+	preload("res://resources/brenda/compliments/compliment3.ogg"),
+	preload("res://resources/brenda/compliments/compliment4.ogg"),
+	preload("res://resources/brenda/compliments/compliment5.ogg")
+]

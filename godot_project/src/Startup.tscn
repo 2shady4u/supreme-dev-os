@@ -135,5 +135,8 @@ valign = 1
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="LoadingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BootTimer" type="Timer" parent="."]
 one_shot = true

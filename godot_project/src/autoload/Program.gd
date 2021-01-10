@@ -36,6 +36,10 @@ var extension : String setget , get_extension
 func get_extension() -> String:
 	return Flow.get_program_value(id, "extension", "MISSING EXTENSION")
 
+var slogan : String setget , get_slogan
+func get_slogan() -> String:
+	return Flow.get_program_value(id, "slogan", "MISSING SLOGAN")
+
 var description : float setget , get_description
 func get_description() -> float:
 	return Flow.get_program_value(id, "description", "MISSING DESCRIPTION")
@@ -51,6 +55,10 @@ func get_show_on_list() -> bool:
 var show_on_desktop : bool setget , get_show_on_desktop
 func get_show_on_desktop() -> bool:
 	return Flow.get_program_value(id, "show_on_desktop", true)
+
+var show_on_boot : bool setget , get_show_on_boot
+func get_show_on_boot() -> bool:
+	return Flow.get_program_value(id, "show_on_boot", false)
 
 var default_version : bool setget , get_default_version
 func get_default_version() -> bool:

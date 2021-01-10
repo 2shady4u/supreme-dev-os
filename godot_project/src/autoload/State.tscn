@@ -2,6 +2,5 @@
 
 [ext_resource path="res://src/autoload/State.gd" type="Script" id=1]
 
-
 [node name="State" type="Node"]
 script = ExtResource( 1 )

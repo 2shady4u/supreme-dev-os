@@ -90,3 +90,6 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Refund Policy: Pantheon Inc. does not provide refunds and does not have any legal responsibility towards the user."
 align = 1
 valign = 1
+
+[node name="BootTimer" type="Timer" parent="."]
+one_shot = true

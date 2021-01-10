@@ -1,0 +1,57 @@
+-------------------
+lucas.tillborg@wamail.com
+sent at 6th of January 2021
+Subject: Release candidate QA
+-------------------
+
+Hey Hanna!
+
+Andrew is busting my balls to release Supreme Dev OS as soon as possible!
+I've sent you a release candidate so if you would test it out, that would help me immensely.
+
+Since I don't have time to fix every single tiny bug, please don't overdo it and just give me the bigger ones.
+
+Cheers,
+Lucas Tillborg
+
+PS: Thanks for helping me out for free!
+I know you are quite busy and I really do appreciate you helping me on such hort notice!
+
+ATTACHMENTS: supreme_dev_os-rc1.zip (not added)
+
+-------------------
+hanna_moranes93@wamail.com
+sent at 7th of January 2021
+Subject: RE: Release candidate QA
+-------------------
+
+Hey Lucas,
+
+I think I correctly installed everything, but I keep getting blue-screened every few minutes...
+The only message I get is the following:
+"Corrupted driver detected... Please contact your nearest Pantheon Fulfillment Center"
+
+Am I doing something wrong? How do I get Supreme Dev OS running without crashing at random?
+
+Greetings,
+Hanna
+
+PS: Happy to help you!
+
+-------------------
+lucas.tillborg@wamail.com
+sent at 7th of January 2021
+Subject: RE:RE: Release candidate QA
+-------------------
+
+Hi Hanna,
+
+I do hope this doesn't happen consistently, but I think that the drivers were corrupted during installation.
+You'll probably have to re-install them by going into the boot menu.
+Accessing the boot screen can be done by pressing the restart button for about 6-8 seconds in the login screen (or the crash screen).
+
+You'll need a Pantheon id and password to login.
+I'll send you those in an encrypted mail cause Supreme Dev OS has enough problems without hackers messing things up as well.
+
+Cheers,
+Lucas Tillborg

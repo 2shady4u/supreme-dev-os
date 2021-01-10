@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lucas_greeting.ogg-5c30d24734b722039346502f47cb1da8.oggstr"
+
+[deps]
+
+source_file="res://resources/brenda/greetings/lucas_greeting.ogg"
+dest_files=[ "res://.import/lucas_greeting.ogg-5c30d24734b722039346502f47cb1da8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

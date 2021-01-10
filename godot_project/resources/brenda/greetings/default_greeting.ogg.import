@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/default_greeting.ogg-f250c8e147a45976a6d0f31ca7f579d1.oggstr"
+
+[deps]
+
+source_file="res://resources/brenda/greetings/default_greeting.ogg"
+dest_files=[ "res://.import/default_greeting.ogg-f250c8e147a45976a6d0f31ca7f579d1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -4,6 +4,10 @@
         {"id": "terminal"},
         {"id": "supreme_dev_os"},
         {"id": "barracuda"},
-        {"id": "pantheon_drm_certifier"}
+        {"id": "pantheon_drm_certifier"},
+        {"id": "ninja"},
+        {"id": "brendai"},
+        {"id": "tic_tac_toe"},
+        {"id": "olympus"}
     ]
 }
