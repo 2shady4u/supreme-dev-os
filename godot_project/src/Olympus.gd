@@ -38,7 +38,7 @@ const LOAD_DEPENDENCIES := {
 		"minimum_version": 0.0,
 		"failure_message": "Olympus could not satisfy loading dependency of the `ENC` file format!\nRECOMMENDATION: install program `ERROR:: PROGRAM BLOCKLISTED BY PANTHEON` to be able to load `ENC` file format."
 	}],
-	"png": [{
+	"import": [{
 		"id": "pngeon",
 		"minimum_version": 0.0,
 		"failure_message": "Olympus could not satisfy loading dependency of the `PNG` file format!\nRECOMMENDATION: install program `pngeon` to be able to load `PNG` file format."

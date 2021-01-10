@@ -18,6 +18,30 @@ func update_program():
 
 		$MC/VB/IconRect.texture = program.icon_texture
 
+		for child in $MC/VB/CommandVB.get_children():
+			$MC/VB/CommandVB.remove_child(child)
+			child.queue_free()
+
+		if program.hidden_commands.empty():
+			var label := Label.new()
+			label.text = "No custom commands are registered"
+
+			$MC/VB/CommandVB.add_child(label)
+		else:
+			for hidden_command in program.hidden_commands:
+				var id_label := Label.new()
+				id_label.text = hidden_command.get("id", "MISSING ID")
+
+				for input in hidden_command.get("inputs", []):
+					id_label.text += " `{0}`".format([input])
+				$MC/VB/CommandVB.add_child(id_label)
+
+				var description_label := Label.new()
+				description_label.text = hidden_command.get("description", "MISSING DESCRIPTION")
+				description_label.autowrap = true
+				description_label.align = Label.ALIGN_CENTER
+				$MC/VB/CommandVB.add_child(description_label)
+
 		var update_dict := LATEST_VERSION_DICT
 		if Flow.mainframe.has(program.id):
 			var mainframe_version = Flow.mainframe[program.id]

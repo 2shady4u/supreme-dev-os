@@ -64,6 +64,10 @@ var default_version : bool setget , get_default_version
 func get_default_version() -> bool:
 	return Flow.get_program_value(id, "default_version", true)
 
-var launch_dependencies : Dictionary setget , get_launch_dependencies
-func get_launch_dependencies() -> Dictionary:
+var launch_dependencies : Array setget , get_launch_dependencies
+func get_launch_dependencies() -> Array:
 	return Flow.get_program_value(id, "launch_dependencies", [])
+
+var hidden_commands : Array setget , get_hidden_commands
+func get_hidden_commands() -> Array:
+	return Flow.get_program_value(id, "hidden_commands", [])

@@ -156,7 +156,7 @@ func _delete_directory_recursive(source_folder : String):
 		push_error("Unable to open '{0}'-folder".format([source_folder]))
 
 func copy_folder_content(source_folder, target_folder):
-	print("Copying...")
+	#print("Copying...")
 
 	var dir : Directory = Directory.new()
 	var _error := OK
@@ -164,17 +164,17 @@ func copy_folder_content(source_folder, target_folder):
 		_error = dir.make_dir_recursive(target_folder)
 
 	if dir.open(source_folder) == OK:
-		print("Copying...2")
+		#print("Copying...2")
 		_error = dir.list_dir_begin(true)
 		var file_name : String = dir.get_next()
 		while (file_name != ""):
-			print(file_name)
+			#print(file_name)
 			if dir.current_is_dir():
 				copy_folder_content("{0}/{1}".format([source_folder, file_name]), "{0}/{1}".format([target_folder, file_name]))
 			else:
-				if file_name.get_extension() != "import":
+				if file_name.get_extension() != "png":
 					_error = dir.copy(source_folder + "/" + file_name, target_folder + "/" + file_name)
-					print(_error)
+					#print(_error)
 			file_name = dir.get_next()
 	else:
 		print("Could not open data folder (%s)."%[source_folder])

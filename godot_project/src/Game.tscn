@@ -85,10 +85,12 @@ margin_left = -182.0
 margin_top = -112.0
 margin_right = 182.0
 margin_bottom = 112.0
+popup_exclusive = true
 
 [node name="Olympus" parent="Windows" instance=ExtResource( 7 )]
 margin_left = -240.0
 margin_right = 240.0
+mouse_filter = 1
 
 [node name="Terminal" parent="Windows" instance=ExtResource( 1 )]
 

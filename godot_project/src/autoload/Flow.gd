@@ -105,6 +105,21 @@ static func save_TXT(path : String, content : String) -> void:
 	else:
 		push_error("Failed to open '{0}', check file availability!".format([path]))
 
+const USER_SETTINGS := {
+	"default": {
+		"name": "John Doe",
+		"portrait_texture": ""
+	},
+	"lucas_tillborg": {
+		"name": "Lucas Tillborg",
+		"portrait_texture": ""
+	},
+	"andrew_pantheon": {
+		"name": "Andrew Pantheon",
+		"portrait_texture": ""
+	}
+}
+
 const PROGRAM_SETTINGS := {
 	"godot": {
 		"extension": "exe",
@@ -160,7 +175,12 @@ const PROGRAM_SETTINGS := {
 		"show_on_boot": true,
 		"description": "Sound driver for pitch-perfect sound design",
 		"icon_texture": preload("res://graphics/program_icons/ninja.png"),
-		"slogan": "The Art of Silence"
+		"slogan": "The Art of Silence",
+		"hidden_commands": [{
+			"id": "change_volume",
+			"inputs": ["volume_percentage"],
+			"description": "Change the master volume of the NINJA MASTER sound card.\nInput values are clamped between 0 and 100."
+		}]
 	},
 	"brendai": {
 		"name": "BrendAI (AI Companion)",

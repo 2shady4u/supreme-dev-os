@@ -17,7 +17,7 @@ func update_content(path):
 			var content : String = Flow.load_TXT(path)
 			$VB/Label.text = content
 			$VB/Label.visible = true
-		"png":
+		"import":
 			var image = Image.new()
 			var err = image.load(path)
 			if err == OK:

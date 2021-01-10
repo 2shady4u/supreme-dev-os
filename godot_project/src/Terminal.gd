@@ -58,6 +58,7 @@ func parse_terminal_command(text : String) -> void:
 			if split.size() != 0:
 				var label := Label.new()
 				label.text = "Command `{0}` does not allow the use of additional parameters".format([command_id])
+				label.autowrap = true
 				$SC/VB.add_child(label)
 			else:
 				callback.call_func()
@@ -65,6 +66,7 @@ func parse_terminal_command(text : String) -> void:
 			if split.size() > number_of_parameters:
 				var label := Label.new()
 				label.text = "Command `{0}` requires {1} additional parameter(s), supplied console command contained {2}".format([command_id, number_of_parameters, split.size()])
+				label.autowrap = true
 				$SC/VB.add_child(label)
 			else:
 				callback.call_func(split)
@@ -89,6 +91,11 @@ var terminal_commands := {
 	"service_number": {
 		"show_on_help": false,
 		"callback": funcref(self, "show_service_number")
+	},
+	"change_volume": {
+		"show_on_help": false,
+		"callback": funcref(self, "change_volume"),
+		"number_of_parameters": 1
 	},
 	"list": {
 		"description": "List all installed programs and their versions",
@@ -118,12 +125,33 @@ func exit_terminal():
 	hide()
 
 func terminal_failure():
-	var label = Label.new()
+	var label := Label.new()
 	label.text = \
 	"""Command was not recognized or is faulty!
 	New here? Type `help` to get a handy list of commands!"""
+	label.autowrap = true
 
 	$SC/VB.add_child(label)
+
+func change_volume(parameters : Array = []):
+	var volume_linear := NAN
+	if not parameters.empty():
+		volume_linear = clamp(float(parameters[0]), 0.0, 100.0)
+
+	if is_nan(volume_linear):
+		var label := Label.new()
+		label.text = "Command `change_volume` requires single space separated parameter `volume_percentage`"
+		label.autowrap = true
+		$SC/VB.add_child(label)
+	else:
+		var volume_db : float = 20*log(float(volume_linear)/100.0)/log(10.0)
+		# -INF (when new_value = 0) doesn't seem to pose any issues!
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume_db)
+
+		var label := Label.new()
+		label.text = "NINJA MASTER -> I changed the master volume to {0}%, kohai!".format([volume_linear])
+		label.autowrap = true
+		$SC/VB.add_child(label)
 
 func update_program(parameters : Array = []):
 	var program_id := ""
@@ -133,10 +161,12 @@ func update_program(parameters : Array = []):
 	if program_id.empty():
 		var label := Label.new()
 		label.text = "Command `update` requires single space separated parameter `program_id`"
+		label.autowrap = true
 		$SC/VB.add_child(label)
 	elif not program_id in State.programs.keys():
 		var label := Label.new()
 		label.text = "Program with `program_id` = {0} is not installed on this device".format([program_id])
+		label.autowrap = true
 		$SC/VB.add_child(label)
 	else:
 		block_terminal = true
@@ -155,10 +185,12 @@ func install_program(parameters : Array = []):
 	if program_id.empty():
 		var label := Label.new()
 		label.text = "Command `install` requires single space separated parameter `program_id`"
+		label.autowrap = true
 		$SC/VB.add_child(label)
 	elif program_id in State.programs.keys():
 		var label := Label.new()
 		label.text = "Program with `program_id` = {0} is already installed on this device".format([program_id])
+		label.autowrap = true
 		$SC/VB.add_child(label)
 	else:
 		block_terminal = true
@@ -172,6 +204,7 @@ func install_program(parameters : Array = []):
 func _on_update_completed(update_text : String):
 	var label := Label.new()
 	label.text = update_text
+	label.autowrap = true
 	$SC/VB.add_child(label)
 
 	block_terminal = false
@@ -180,15 +213,17 @@ func _on_update_completed(update_text : String):
 func _on_install_completed(install_text : String):
 	var label := Label.new()
 	label.text = install_text
+	label.autowrap = true
 	$SC/VB.add_child(label)
 
 	block_terminal = false
 	add_terminal_edit()
 
 func show_service_number():
-	var label = Label.new()
+	var label := Label.new()
 	# Will have to be randomly generated at start by Flow.gd!
 	label.text = "A5U8CC"
+	label.autowrap = true
 
 	$SC/VB.add_child(label)
 
@@ -209,6 +244,7 @@ func show_help():
 			var label := Label.new()
 			label.text = key + " - "
 			label.text += terminal_commands[key].get("description", "no description available")
+			label.autowrap = true
 
 			$SC/VB.add_child(label)
 
@@ -217,6 +253,7 @@ func list_programs():
 		if program.show_on_list:
 			var label := Label.new()
 			label.text = "`{0}`\nversion: {1}\ndescription: {2}\n".format([program.id, program.version, program.description])
+			label.autowrap = true
 
 			$SC/VB.add_child(label)
 
