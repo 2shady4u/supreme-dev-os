@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/windows/settings/BackgroundThumbnail.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/windows/settings/FileDialog.gd" type="Script" id=2]
+[ext_resource path="res://src/windows/base/FileDialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/windows/settings/BackgroundsTab.gd" type="Script" id=3]
 
 [node name="BackgroundsTab" type="Control"]
@@ -116,22 +116,4 @@ size_flags_horizontal = 6
 disabled = true
 text = "Confirm Changes"
 
-[node name="FileDialog" type="FileDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -157.5
-margin_top = -128.0
-margin_right = 157.5
-margin_bottom = 128.0
-rect_min_size = Vector2( 256, 256 )
-window_title = "Open a File"
-mode = 0
-access = 1
-current_dir = "user://"
-current_path = "user://"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="FileDialog" parent="." instance=ExtResource( 2 )]

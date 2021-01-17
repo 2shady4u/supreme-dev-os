@@ -260,7 +260,7 @@ func copy_folder_content(source_folder, target_folder):
 			if dir.current_is_dir():
 				copy_folder_content("{0}/{1}".format([source_folder, file_name]), "{0}/{1}".format([target_folder, file_name]))
 			else:
-				if file_name.get_extension() != "png":
+				if file_name.get_extension() != "import":
 					_error = dir.copy(source_folder + "/" + file_name, target_folder + "/" + file_name)
 					#print(_error)
 			file_name = dir.get_next()
