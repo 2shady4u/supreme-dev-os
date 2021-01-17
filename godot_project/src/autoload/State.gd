@@ -10,6 +10,7 @@ var fetched_mails := false
 var dropped_passwords := false
 
 signal background_changed
+signal programs_changed
 
 func _ready():
 	var _error : int = load_stateJSON()
@@ -95,6 +96,7 @@ func add_program_by_id(program_id : String) -> void:
 
 	print("Adding brand-new program with id '{0}' to State!".format([program_id]))
 	programs[program.id] = program
+	emit_signal("programs_changed")
 
 func remove_program_by_id(program_id : String) -> void:
 	var success := programs.erase(program_id)

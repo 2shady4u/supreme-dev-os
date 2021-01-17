@@ -5,7 +5,6 @@ var id := "" setget set_id
 func set_id(value : String):
 	id = value
 	settings = Flow.USER_SETTINGS.get(id, {})
-
 var settings := {}
 
 var background_texture : Texture setget , get_background_texture
@@ -21,9 +20,7 @@ func set_context(value : Dictionary) -> void:
 		push_error("User context requires id!")
 		return
 
-	id = value.id
-	settings = Flow.USER_SETTINGS.get(id, {})
-	print(settings)
+	self.id = value.id
 
 # These are all constants derived from USER_SETTINGS and should be treated as such!
 var name : Array setget , get_name

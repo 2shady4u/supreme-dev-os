@@ -25,7 +25,7 @@ func _on_switch_button_pressed():
 	if user_id in State.users.keys():
 		var user : classUser = State.users[user_id]
 		var correct_password := user.password
-		if password == correct_password or correct_password.empty():
+		if password == correct_password or correct_password.empty() or State.dropped_passwords:
 			State.user_id = user_id
 			Flow.change_scene_to("startup", get_viewport())
 

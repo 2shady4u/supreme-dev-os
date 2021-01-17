@@ -22,8 +22,6 @@ func _ready():
 
 	$VB/PC/HB/HeaderLabel.text = header_text
 
-	print("ready...")
-	print(rect_position)
 	_reset_position = rect_position
 
 func _process(_delta):
@@ -39,8 +37,6 @@ func _on_gui_input(event):
 		_is_dragging = false
 
 func show():
-	print("showing...")
-	print(_reset_position)
 	rect_position = _reset_position
 	visible = true
 

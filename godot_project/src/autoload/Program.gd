@@ -1,7 +1,10 @@
 class_name classProgram
 extends Reference
 
-var id := ""
+var id := "" setget set_id
+func set_id(value : String) -> void:
+	id = value
+	settings = Flow.PROGRAM_SETTINGS.get(id, {})
 var settings := {}
 
 var version := 0.0
@@ -14,8 +17,7 @@ func set_context(value : Dictionary) -> void:
 		push_error("Program context requires id!")
 		return
 
-	id = value.id
-	settings = Flow.PROGRAM_SETTINGS.get(id, {})
+	self.id = value.id
 
 	version = value.get("version", self.default_version)
 

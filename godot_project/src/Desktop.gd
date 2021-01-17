@@ -23,9 +23,7 @@ var windows := []
 func _ready():
 	var _error := $VB/PC/HB/StartMenu.connect("program_launched", self, "_on_program_launched")
 	_error = State.connect("background_changed", self, "_on_background_changed")
-
-	# Should be changed!!!!!
-	#var _error : int = $Panels/Terminal.connect("programs_updated", self, "_on_programs_updated"
+	_error = State.connect("programs_changed", self, "_on_programs_changed")
 
 	for child in _desktop_icons_container.get_children():
 		_desktop_icons_container.remove_child(child)
@@ -77,7 +75,7 @@ func _on_taskbar_button_toggled(toggled : bool, window : classWindow) -> void:
 	else:
 		window.hide()
 
-func _on_programs_updated():
+func _on_programs_changed():
 	for program in State.programs.values():
 		if program.show_on_desktop:
 			if not program.id in programs:
@@ -107,12 +105,13 @@ func _add_desktop_icon(program : classProgram) -> void:
 func _add_window(packed_scene : PackedScene):
 	var window : classWindow = packed_scene.instance()
 	var _error : int = window.connect("window_closed", self, "_on_window_closed", [window])
+	var window_name := window.name # Get the name BEFORE it gets corrupted!
 	_windows_container.add_child(window)
 
 	var taskbar_button := SCENE_TASKBAR_BUTTON.instance()
 	_error = taskbar_button.connect("toggled", self, "_on_taskbar_button_toggled", [window])
 
-	taskbar_button.text = window.name
+	taskbar_button.text = window_name
 	taskbar_button.pressed = true
 
 	window.taskbar_button = taskbar_button
