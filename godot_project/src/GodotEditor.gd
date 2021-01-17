@@ -16,11 +16,22 @@ func _ready():
 	var _error := _end_timer.connect("timeout", self, "_on_end_timer_timeout")
 	_error = _end_tween.connect("tween_all_completed", self, "_on_end_tween_all_completed")
 
-	_error = $Panel/VB/HB/SceneButton.connect("pressed", self, "_on_touch_anything")
-	_error = $Panel/VB/HB/ProjectButton.connect("pressed", self, "_on_touch_anything")
-	_error = $Panel/VB/HB/DebugButton.connect("pressed", self, "_on_touch_anything")
-	_error = $Panel/VB/HB/EditorButton.connect("pressed", self, "_on_touch_anything")
-	_error = $Panel/VB/HB/HelpButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/TopHBox/SceneButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/TopHBox/ProjectButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/TopHBox/DebugButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/TopHBox/EditorButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/TopHBox/HelpButton.connect("pressed", self, "_on_touch_anything")
+
+	_error = $Panel/VB/PC/HB/CloseButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/PC/HB/MinimizeButton.connect("pressed", self, "_on_touch_anything")
+
+	_error = $Panel/VB/BottomHBox/MiddleVBox/PC/HB/OutputButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/BottomHBox/MiddleVBox/PC/HB/DebuggerButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/BottomHBox/MiddleVBox/PC/HB/AudioButton.connect("pressed", self, "_on_touch_anything")
+	_error = $Panel/VB/BottomHBox/MiddleVBox/PC/HB/AnimationButton.connect("pressed", self, "_on_touch_anything")
+
+	_error = $Panel/VB/BottomHBox/RightTab.connect("tab_changed", self, "_on_touch_anything")
+	_error = $Panel/VB/BottomHBox/VBoxContainer/LeftTopTab.connect("tab_changed", self, "_on_touch_anything")
 
 	_end_timer.wait_time = END_DURATION
 	set_process_input(false)

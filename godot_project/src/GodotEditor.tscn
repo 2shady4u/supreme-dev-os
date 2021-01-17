@@ -66,64 +66,64 @@ texture_normal = ExtResource( 3 )
 expand = true
 stretch_mode = 5
 
-[node name="HB" type="HBoxContainer" parent="Panel/VB"]
+[node name="TopHBox" type="HBoxContainer" parent="Panel/VB"]
 margin_top = 34.0
 margin_right = 1024.0
 margin_bottom = 54.0
 
-[node name="SceneButton" type="Button" parent="Panel/VB/HB"]
+[node name="SceneButton" type="Button" parent="Panel/VB/TopHBox"]
 margin_right = 50.0
 margin_bottom = 20.0
 text = "Scene"
 flat = true
 
-[node name="ProjectButton" type="Button" parent="Panel/VB/HB"]
+[node name="ProjectButton" type="Button" parent="Panel/VB/TopHBox"]
 margin_left = 54.0
 margin_right = 111.0
 margin_bottom = 20.0
 text = "Project"
 flat = true
 
-[node name="DebugButton" type="Button" parent="Panel/VB/HB"]
+[node name="DebugButton" type="Button" parent="Panel/VB/TopHBox"]
 margin_left = 115.0
 margin_right = 168.0
 margin_bottom = 20.0
 text = "Debug"
 flat = true
 
-[node name="EditorButton" type="Button" parent="Panel/VB/HB"]
+[node name="EditorButton" type="Button" parent="Panel/VB/TopHBox"]
 margin_left = 172.0
 margin_right = 221.0
 margin_bottom = 20.0
 text = "Editor"
 flat = true
 
-[node name="HelpButton" type="Button" parent="Panel/VB/HB"]
+[node name="HelpButton" type="Button" parent="Panel/VB/TopHBox"]
 margin_left = 225.0
 margin_right = 267.0
 margin_bottom = 20.0
 text = "Help"
 flat = true
 
-[node name="HB2" type="HBoxContainer" parent="Panel/VB"]
+[node name="BottomHBox" type="HBoxContainer" parent="Panel/VB"]
 margin_top = 58.0
 margin_right = 1024.0
 margin_bottom = 572.0
 size_flags_vertical = 3
 custom_constants/separation = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VB/HB2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VB/BottomHBox"]
 margin_right = 250.0
 margin_bottom = 514.0
 size_flags_horizontal = 3
 
-[node name="TabContainer" type="TabContainer" parent="Panel/VB/HB2/VBoxContainer"]
+[node name="LeftTopTab" type="TabContainer" parent="Panel/VB/BottomHBox/VBoxContainer"]
 margin_right = 250.0
 margin_bottom = 255.0
 size_flags_vertical = 3
 tab_align = 0
 
-[node name="Scene" type="Control" parent="Panel/VB/HB2/VBoxContainer/TabContainer"]
+[node name="Scene" type="Control" parent="Panel/VB/BottomHBox/VBoxContainer/LeftTopTab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -131,7 +131,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Import" type="Control" parent="Panel/VB/HB2/VBoxContainer/TabContainer"]
+[node name="Import" type="Control" parent="Panel/VB/BottomHBox/VBoxContainer/LeftTopTab"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -140,14 +140,14 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="TabContainer2" type="TabContainer" parent="Panel/VB/HB2/VBoxContainer"]
+[node name="LeftBottomTab" type="TabContainer" parent="Panel/VB/BottomHBox/VBoxContainer"]
 margin_top = 259.0
 margin_right = 250.0
 margin_bottom = 514.0
 size_flags_vertical = 3
 tab_align = 0
 
-[node name="FileSystem" type="Control" parent="Panel/VB/HB2/VBoxContainer/TabContainer2"]
+[node name="FileSystem" type="Control" parent="Panel/VB/BottomHBox/VBoxContainer/LeftBottomTab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -155,7 +155,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VB/HB2"]
+[node name="MiddleVBox" type="VBoxContainer" parent="Panel/VB/BottomHBox"]
 margin_left = 262.0
 margin_right = 762.0
 margin_bottom = 514.0
@@ -163,14 +163,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="TabContainer2" type="TabContainer" parent="Panel/VB/HB2/VBoxContainer2"]
+[node name="MiddleTab" type="TabContainer" parent="Panel/VB/BottomHBox/MiddleVBox"]
 margin_right = 500.0
 margin_bottom = 476.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 tab_align = 0
 
-[node name="[empty]" type="Control" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2"]
+[node name="[empty]" type="Control" parent="Panel/VB/BottomHBox/MiddleVBox/MiddleTab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -178,7 +178,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="ViewportContainer" type="ViewportContainer" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]"]
+[node name="ViewportContainer" type="ViewportContainer" parent="Panel/VB/BottomHBox/MiddleVBox/MiddleTab/[empty]"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -8.0
@@ -191,59 +191,59 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]/ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="Panel/VB/BottomHBox/MiddleVBox/MiddleTab/[empty]/ViewportContainer"]
 size = Vector2( 492, 440 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Spatial" type="Spatial" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]/ViewportContainer/Viewport"]
+[node name="Spatial" type="Spatial" parent="Panel/VB/BottomHBox/MiddleVBox/MiddleTab/[empty]/ViewportContainer/Viewport"]
 
-[node name="MeshInstance" type="MeshInstance" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]/ViewportContainer/Viewport/Spatial"]
+[node name="MeshInstance" type="MeshInstance" parent="Panel/VB/BottomHBox/MiddleVBox/MiddleTab/[empty]/ViewportContainer/Viewport/Spatial"]
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="Camera" type="Camera" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]/ViewportContainer/Viewport"]
+[node name="Camera" type="Camera" parent="Panel/VB/BottomHBox/MiddleVBox/MiddleTab/[empty]/ViewportContainer/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.07649 )
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/VB/HB2/VBoxContainer2"]
+[node name="PC" type="PanelContainer" parent="Panel/VB/BottomHBox/MiddleVBox"]
 margin_top = 480.0
 margin_right = 500.0
 margin_bottom = 514.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer"]
+[node name="HB" type="HBoxContainer" parent="Panel/VB/BottomHBox/MiddleVBox/PC"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 493.0
 margin_bottom = 27.0
 
-[node name="OutputButton" type="Button" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="OutputButton" type="Button" parent="Panel/VB/BottomHBox/MiddleVBox/PC/HB"]
 margin_right = 57.0
 margin_bottom = 20.0
 text = "Output"
 flat = true
 
-[node name="DebuggerButton" type="Button" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="DebuggerButton" type="Button" parent="Panel/VB/BottomHBox/MiddleVBox/PC/HB"]
 margin_left = 61.0
 margin_right = 134.0
 margin_bottom = 20.0
 text = "Debugger"
 flat = true
 
-[node name="AudioButton" type="Button" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="AudioButton" type="Button" parent="Panel/VB/BottomHBox/MiddleVBox/PC/HB"]
 margin_left = 138.0
 margin_right = 187.0
 margin_bottom = 20.0
 text = "Audio"
 flat = true
 
-[node name="AnimationButton" type="Button" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="AnimationButton" type="Button" parent="Panel/VB/BottomHBox/MiddleVBox/PC/HB"]
 margin_left = 191.0
 margin_right = 269.0
 margin_bottom = 20.0
 text = "Animation"
 flat = true
 
-[node name="Label" type="Label" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VB/BottomHBox/MiddleVBox/PC/HB"]
 margin_left = 273.0
 margin_top = 3.0
 margin_right = 486.0
@@ -252,14 +252,14 @@ size_flags_horizontal = 3
 text = "3.1.stable"
 align = 2
 
-[node name="TabContainer3" type="TabContainer" parent="Panel/VB/HB2"]
+[node name="RightTab" type="TabContainer" parent="Panel/VB/BottomHBox"]
 margin_left = 774.0
 margin_right = 1024.0
 margin_bottom = 514.0
 size_flags_horizontal = 3
 tab_align = 0
 
-[node name="Inspector" type="Control" parent="Panel/VB/HB2/TabContainer3"]
+[node name="Inspector" type="Control" parent="Panel/VB/BottomHBox/RightTab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -267,7 +267,7 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Node" type="Control" parent="Panel/VB/HB2/TabContainer3"]
+[node name="Node" type="Control" parent="Panel/VB/BottomHBox/RightTab"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0

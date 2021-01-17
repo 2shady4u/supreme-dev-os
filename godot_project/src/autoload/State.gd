@@ -20,6 +20,9 @@ func _ready():
 	copy_folder_content("res://copy_to_user", "user://")
 	add_random_crash_logs()
 
+	# Some kind of race condition here... ignore for now!
+	copy_folder_content("res://personal_folders/{0}".format([user_id]), "user://personal/")
+
 func load_stateJSON(path : String = DEFAULT_CONTEXT_PATH) -> int:
 	var context : Dictionary = Flow.load_JSON(path)
 	if not context.empty():
@@ -49,6 +52,9 @@ func set_user_id(value : String):
 	user_id = value
 	if users.has(user_id):
 		user = users[user_id]
+		# Swap out the personal folder!!!
+		_delete_directory_recursive("user://personal")
+		copy_folder_content("res://personal_folders/{0}".format([user_id]), "user://personal/")
 	else:
 		push_error("User with id is not present in the known group of users!")
 

@@ -1,7 +1,6 @@
 [gd_scene format=2]
 
 [node name="FileDialog" type="FileDialog"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

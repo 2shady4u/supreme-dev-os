@@ -182,7 +182,14 @@ const PROGRAM_SETTINGS := {
 		"default_version": 1.0,
 		"packed_scene": preload("res://src/windows/VirtualDevKit.tscn"),
 		"icon_texture": preload("res://graphics/program_icons/virtual_dev_kit.png"),
-		"description": "Development kit for making Godot games in Pantheon Vision (c)"
+		"description": "Development kit for making Godot games in Pantheon Vision (c)",
+		"launch_dependencies": [
+			{
+				"id": "pantheon_drm_certifier",
+				"minimum_version": 1.3,
+				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
+			}
+		]
 	},
 	"minesweeper": {
 		"extension": "exe",
@@ -298,7 +305,7 @@ const PROGRAM_SETTINGS := {
 		"launch_dependencies": [
 			{
 				"id": "pantheon_drm_certifier",
-				"minimum_version": 1.2,
+				"minimum_version": 1.3,
 				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
 			}
 		],

@@ -146,4 +146,3 @@ __meta__ = {
 }
 
 [node name="FileDialog" parent="." index="2" instance=ExtResource( 6 )]
-visible = false
