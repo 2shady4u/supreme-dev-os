@@ -1,0 +1,118 @@
+###------------------------###
+Walkthrough for Supreme Dev OS
+###------------------------###
+
+It might be a bit unclear, but the main goal of this puzzle game is indeed to get `Godot.exe` running so you can, hopefully, start making some sick games.
+
+I do recommend that you attempt to solve the puzzles by yourself before reading these spoilers...
+However, if you are stuck... then this might be just the right document for you!
+
+------------------------------
+0. Godot.exe keeps crashing and I don't know why :(
+
+You should read the actual failure message that appears on the failure screen!
+I know that some gamers don't like to read and just skip through dialogues and such, but this game does require you to read stuff!
+
+------------------------------
+1. According to the failure message, I need to update my Pantheon DRM Certifier, but I don't know how!
+
+As in most operating systems, a terminal (Terminal.exe) is provided for you that is able execute several commands.
+One of these commands is the `update` command which requires you to input a program_id.
+
+Your obvious mission is to find the program_id of the Pantheon DRM Certifier and update it!
+
+------------------------------
+2. I can't seem to find the program_id of the Pantheon DRM Certifier!
+
+All installed programs (that are not drivers) can be listed in the terminal using the `list`-command.
+One of those will be the Pantheon DRM certifier, thus the `update`-command can be executed as such:
+
+update pantheon_drm_certifier
+
+The above command takes a while to execute, but after waiting about a second you should have your Certifier updated to the latest version!
+
+------------------------------
+3. Godot.exe still fails due to the Barracuda driver not being up-to-date!
+
+Obviously, you will have to update the barracuda driver in some way... 
+Now that the Pantheon DRM Certifier is updated, you can browse the filesystem using the Olympus program.
+Maybe there's something in the filesystem that can help you?
+
+------------------------------
+4. I read all the mails but I still have no idea what to do!
+
+One of the mails explains how to access the Boot menu.
+Basically you will have to press the `R` key (= the restart key as stated in the Failure window!) for about 6-8 seconds in either the Failure or Login window.
+This might take a while and you'll have to be patient...
+
+------------------------------
+5. I am in the Boot menu but I can't login! Where can I find the proper credentials?
+
+As discussed in the mails by Lucas and Hana, the boot credentials are encrypted in the `boot_cred.enc`-file.
+You'll have to open this file using the Olympus program.
+
+------------------------------
+6. Olympus crashes the OS when I attempt to open the encrypted file and I can't figure what program I should install!
+
+The necessary program_id has been blocklisted by Lucas and thus won't show up in the Failure window.
+But there was a time (somewhere in the past) when this program was NOT blocklisted and thus, as a direct result, would have to show up in the Failure window.
+Maybe there's a place where crash logs are saved by the OS?
+
+------------------------------
+7. I don't know which of the crash logs to open! There are so many!
+
+Checking the mails shows that Hana decrypted the encrypted file on the 8th of January, so you should only check the crash logs of that particular date.
+
+------------------------------
+8. I still can't find the necessary program_id of the decryption program!
+
+It should be definitely be one of the files! Anyway if you really can't find it:
+
+install enigma_encryptor
+
+That should do the trick! Now try opening the `boot_cred.enc`-file again in Olympus!
+
+------------------------------
+9. I updated Barracuda in the Boot Menu, but `Godot.exe` still crashes due to not having root privileges!
+
+Seems like your account just doesn't have the proper admin rights to use Godot.
+You'll probably have to switch accounts in some way....How?
+Maybe there's some hidden commands somewhere or something that you might input in the terminal?
+
+------------------------------
+10. I don't know where to find hidden commands!?
+
+Hidden commands are found in the Boot Menu. Different drivers have different commands that can be used in the terminal!
+One of them might help you along!
+
+------------------------------
+11. I still can't progress! Even after finding out the hidden commands and trying them all...
+
+One of the hidden commands is `fetch_mail`, which contacts the Panther Mail Server and automatically downloads any new mails to your `documents`-folder.
+After executing it you should have several new mails available to read using Olympus!
+
+------------------------------
+12. I read the new mails... but I don't find any useful information at all!!!
+
+Lucas literally gives away his account's ID and password. You can input both of them in the Account tab of the Settings window and switch to his account!
+The settings window can be opened by pressing the `start`-button on the left-side of the taskbar.
+
+------------------------------
+13. I switched to Lucas' account, but I keep getting logged out due to some deadline related issue...
+
+If only there was a way to stop Brenda (the Articifical Intelligence) from logging you out each time!
+
+------------------------------
+14. Stop being a cryptic asshole and tell me already!
+
+You can uninstall/disable Brenda by uninstalling her driver in the Boot Menu... that should do the trick!
+
+------------------------------
+15. I logged in as Lucas and don't know what to do?
+
+Check Lucas' personal folder for any new clues! He might have left something there that will allow you to get root privileges!
+
+------------------------------
+16. Godot.exe launches the Godot Editor but any button/tab that I touch crashes the editor!
+
+That's the end of the game... I hope you at least a marginal amount of fun!
