@@ -60,11 +60,42 @@ func _on_browse_button_presed():
 	$FileDialog.popup_centered()
 
 func _on_file_selected(path : String):
-	var image = Image.new()
-	var err = image.load(path)
-	print(path)
-	if err == OK:
-		var texture = ImageTexture.new()
-		texture.create_from_image(image, 0)
+	if check_dependencies(path.get_extension()):
+		var image = Image.new()
+		var err = image.load(path)
+		print(path)
+		if err == OK:
+			var texture = ImageTexture.new()
+			texture.create_from_image(image, 0)
 
-		State.background_texture = texture
+			State.background_texture = texture
+	else:
+		Flow.change_scene_to("failure", get_viewport())
+
+func check_dependencies(extension : String) -> bool:
+	for dependency in LOAD_DEPENDENCIES.get(extension, []):
+		if not dependency.has("id"):
+			push_error("Depency without an id!")
+			continue
+		var program : Reference = State.get_program_by_id(dependency.id)
+		var minimum_version = dependency.minimum_version
+
+		if program:
+			if program.version < minimum_version:
+				# Also add the crash message to the flow!
+				Flow.failure_message = dependency.failure_message
+				return false
+		else:
+			Flow.failure_message = dependency.failure_message
+			return false
+	return true
+
+const LOAD_DEPENDENCIES := {
+	"txt": [],
+	"enc": [],
+	"png": [{
+		"id": "pngeon",
+		"minimum_version": 0.0,
+		"failure_message": "Settings could not satisfy loading dependency of the `PNG` file format!\nRECOMMENDATION: install program `pngeon` to be able to load `PNG` file format."
+	}]
+}
