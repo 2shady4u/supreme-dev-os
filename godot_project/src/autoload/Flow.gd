@@ -156,7 +156,7 @@ const PROGRAM_SETTINGS := {
 			},
 			{
 				"id": "barracuda",
-				"minimum_version": 0.2,
+				"minimum_version": 0.3,
 				"failure_message": "Failed to initialize Barracuda X99-A graphics driver (v0.2)\nProgram `Godot.exe` requires minimum version 0.3"
 			}
 		],

@@ -7,6 +7,7 @@ const REFERENCE_MINIGAME_STAT := preload("res://src/autoload/MinigameStat.gd")
 const DEFAULT_CONTEXT_PATH := "res://default_context.json"
 
 var fetched_mails := false
+var dropped_passwords := false
 
 signal background_changed
 
