@@ -9,7 +9,7 @@ func reset_content():
 	$VB/TextureRect.visible = false
 	$VB/DefaultLabel.visible = false
 
-func update_content(path):
+func update_content(path : String):
 	reset_content()
 
 	match path.get_extension():
