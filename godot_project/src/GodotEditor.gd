@@ -39,7 +39,7 @@ func _ready():
 	_crash_control.visible = false
 	_end_control.visible = false
 
-func _on_touch_anything():
+func _on_touch_anything(_tab : int = 0):
 	initiate_crash()
 
 func _input(event : InputEvent) -> void:
