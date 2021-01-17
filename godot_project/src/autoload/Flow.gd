@@ -178,7 +178,7 @@ const PROGRAM_SETTINGS := {
 	},
 	"virtual_dev_kit": {
 		"extension": "exe",
-		"name": "Pantheon Vision",
+		"name": "PanVision",
 		"default_version": 1.0,
 		"packed_scene": preload("res://src/windows/VirtualDevKit.tscn"),
 		"icon_texture": preload("res://graphics/program_icons/virtual_dev_kit.png"),
