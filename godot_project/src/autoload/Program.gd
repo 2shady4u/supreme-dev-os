@@ -22,12 +22,12 @@ func set_context(value : Dictionary) -> void:
 func check_launch_dependencies() -> bool:
 	for dependency in self.launch_dependencies:
 		if not dependency.has("id"):
-			push_error("Depency without an id!")
+			push_error("Dependency without an id!")
 			continue
 		var program : Reference = State.get_program_by_id(dependency.id)
 		var minimum_version = dependency.minimum_version
 
-		if program.version < minimum_version and program.is_installed:
+		if program.version < minimum_version or not program.is_installed:
 			# Also add the crash message to the flow!
 			Flow.failure_message = dependency.failure_message
 			return false

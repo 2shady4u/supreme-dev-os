@@ -1,0 +1,22 @@
+-------------------
+ceo@pantheon.inc
+sent at 10th of January 2021
+Subject: New Priorities
+-------------------
+
+Hello, Lucas,
+
+I just had a board meeting with my shareholders and we aren't happy with where the project is going.
+At this rate of development, Supreme Dev OS will miss this quarter's release window.
+Also, there are concerns that Supreme Dev OS might not be adopted as broadly as our initial estimates indicate.
+
+You've been harrowing me about insufficient manpower since the beginning of the project.
+As a result, I'm assigning a new member to the team.
+
+Brock Zhu will be responsible for implementing `Pantheon Vision`, a revolutionary new virtualization program that will allow users to run Supreme Dev OS on their device, regardlesss of their available hardware.
+
+I expect you to fully colloborate with him on the implemention of this new flagship program and report back to me with results ASAP.
+
+I hope we are clear here,
+Andrew Pantheon
+CEO of Pantheon Incorporated

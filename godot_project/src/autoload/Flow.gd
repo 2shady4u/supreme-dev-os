@@ -124,18 +124,21 @@ const USER_SETTINGS := {
 	"lucas_tillborg": {
 		"name": "Lucas Tillborg",
 		"portrait_texture": preload("res://graphics/startup/portrait_lucas.png"),
-		"greeting": preload("res://resources/brenda/greetings/lucas_greeting.ogg")
+		"greeting": preload("res://resources/brenda/greetings/lucas_greeting.ogg"),
+		"password": "butterfly$10"
 	},
 	"andrew_pantheon": {
 		"is_root": true,
 		"name": "Andrew Pantheon",
 		"portrait_texture": preload("res://graphics/startup/portrait_andrew.png"),
-		"greeting": preload("res://resources/brenda/greetings/andrew_greeting.ogg")
+		"greeting": preload("res://resources/brenda/greetings/andrew_greeting.ogg"),
+		"password": "password123"
 	},
 	"brock_zhu": {
 		"name": "Brock Zhu",
 		"portrait_texture": preload("res://graphics/startup/portrait_andrew.png"),
-		"greeting": preload("res://resources/brenda/greetings/default_greeting.ogg")
+		"greeting": preload("res://resources/brenda/greetings/default_greeting.ogg"),
+		"password": "!8^(756"
 	}
 }
 
@@ -148,7 +151,7 @@ const PROGRAM_SETTINGS := {
 		"launch_dependencies": [
 			{
 				"id": "pantheon_drm_certifier",
-				"minimum_version": 1.2,
+				"minimum_version": 1.3,
 				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
 			},
 			{
@@ -163,8 +166,7 @@ const PROGRAM_SETTINGS := {
 	"settings": {
 		"packed_scene": preload("res://src/windows/Settings.tscn"),
 		"show_on_list": false,
-		"show_on_desktop": false,
-		"show_on_boot": true,
+		"show_on_desktop": false
 	},
 	"terminal": {
 		"extension": "exe",
@@ -192,8 +194,13 @@ const PROGRAM_SETTINGS := {
 		"launch_dependencies": [
 			{
 				"id": "pantheon_drm_certifier",
-				"minimum_version": 1.2,
+				"minimum_version": 1.3,
 				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
+			},
+			{
+				"id": "brendai",
+				"minimum_version": 0.0,
+				"failure_message": "Launch dependency `brendai` could not be satisfied!\nProgram `Minesweeper.exe` requires minimum version 3.12"
 			}
 		],
 	},
@@ -271,7 +278,7 @@ const PROGRAM_SETTINGS := {
 		"launch_dependencies": [
 			{
 				"id": "pantheon_drm_certifier",
-				"minimum_version": 1.2,
+				"minimum_version": 1.3,
 				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
 			},
 			{

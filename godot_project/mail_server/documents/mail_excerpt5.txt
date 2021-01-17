@@ -1,0 +1,32 @@
+-------------------
+brock.zhu@pantheon.inc
+sent at 11th of January 2021
+Subject: Pantheon Vision Set-up
+-------------------
+
+Hi Lucas,
+
+My name is Brock Zhu and I've been hired by Mr. Pantheon to create and work on the virtualization software.
+To be able to correctly test it and get rid of all bugs, I require the program to be installable on my device.
+I have attached the lastest version of the program in attachment.
+
+Pleased to make your acquiantance.
+
+Salutations,
+Brock Zhu
+
+ATTACHMENTS: virtual_dev_kit-1.0.zip (not added)
+
+-------------------
+lucas.tillborg@wamail.com
+sent at 12th of January 2021
+Subject: RE:Pantheon Vision Set-up
+-------------------
+
+Hello Brock,
+
+I added your program to the Pantheon Mainframe under the temporary name `virtual_dev_kit`.
+You should now be able install it from your version of Supreme Dev OS without any issue.
+
+Cheers,
+Lucas

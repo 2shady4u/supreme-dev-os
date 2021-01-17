@@ -6,6 +6,8 @@ const SCENE_TERMINAL_HEADER := preload("res://src/windows/terminal/TerminalHeade
 const SCENE_UPDATE_LABEL := preload("res://src/windows/terminal/UpdateLabel.tscn")
 const SCENE_INSTALL_LABEL := preload("res://src/windows/terminal/InstallLabel.tscn")
 
+const SCENE_FETCH_MAIL_LABEL := preload("res://src/windows/terminal/FetchMailLabel.tscn")
+
 onready var _audio_stream_player := $AudioStreamPlayer
 onready var _vbox := $VB/SC/VB
 
@@ -135,7 +137,7 @@ var terminal_commands := {
 	},
 	"fetch_mail": {
 		"show_on_help": false,
-		"callback": funcref(self, "terminal_failure")
+		"callback": funcref(self, "fetch_mail")
 	},
 }
 
@@ -253,6 +255,15 @@ func _on_update_completed(update_text : String):
 	block_terminal = false
 	add_terminal_edit()
 
+func _on_fetch_mail_completed(fetch_mail_text : String):
+	var label := Label.new()
+	label.text = fetch_mail_text
+	label.autowrap = true
+	_vbox.add_child(label)
+
+	block_terminal = false
+	add_terminal_edit()
+
 func _on_install_completed(install_text : String):
 	var label := Label.new()
 	label.text = install_text
@@ -312,6 +323,13 @@ func list_minigame_stats():
 		label.autowrap = true
 
 		_vbox.add_child(label)
+
+func fetch_mail():
+	block_terminal = true
+	var fetch_mail_label = SCENE_FETCH_MAIL_LABEL.instance()
+	fetch_mail_label.connect("fetch_mail_completed", self, "_on_fetch_mail_completed", [], CONNECT_ONESHOT)
+
+	_vbox.add_child(fetch_mail_label)
 
 const COMPLIMENTS := [
 	preload("res://resources/brenda/compliments/compliment1.ogg"),

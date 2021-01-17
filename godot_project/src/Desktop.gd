@@ -25,9 +25,7 @@ func _ready():
 	_error = State.connect("background_changed", self, "_on_background_changed")
 
 	# Should be changed!!!!!
-	#var _error : int = $Panels/Terminal.connect("programs_updated", self, "_on_programs_updated")
-	if State.user_id == "lucas_tillborg":
-		_error = _audio_stream_player.connect("finished", self, "_on_audio_stream_player_finished")
+	#var _error : int = $Panels/Terminal.connect("programs_updated", self, "_on_programs_updated"
 
 	for child in _desktop_icons_container.get_children():
 		_desktop_icons_container.remove_child(child)
@@ -43,8 +41,12 @@ func _ready():
 	var user : classUser = State.user
 	if user:
 		_background_rect.texture = user.background_texture
-		_audio_stream_player.stream = user.greeting
-		_audio_stream_player.play()
+		var brendai : classProgram = State.get_program_by_id("brendai")
+		if brendai and brendai.is_installed:
+			_audio_stream_player.stream = user.greeting
+			_audio_stream_player.play()
+			if user.id == "lucas_tillborg":
+				_error = _audio_stream_player.connect("finished", self, "_on_audio_stream_player_finished")
 
 func _on_background_changed(background_texture : Texture):
 	_background_rect.texture = background_texture

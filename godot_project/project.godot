@@ -64,7 +64,7 @@ _global_script_class_icons={
 
 config/name="Supreme Dev OS"
 config/description="An out-of-the-box development environment for creating games in Godot."
-run/main_scene="res://src/Desktop.tscn"
+run/main_scene="res://src/Startup.tscn"
 config/icon="res://icon.png"
 
 [autoload]

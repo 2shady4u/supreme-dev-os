@@ -2,8 +2,8 @@ class_name classMinigameStat
 extends Reference
 
 var id := ""
-var loss := 0
 var win := 0
+var loss := 0
 var stalemate := 0
 
 var has_stalemate := true
@@ -15,5 +15,8 @@ func set_context(value : Dictionary) -> void:
 		return
 
 	id = value.id
-	loss = value.get("loss", self.default_version)
-	loss = value.get("loss", self.default_version)
+	has_stalemate = value.get("has_stalemate", has_stalemate)
+
+	win = value.get("win", win)
+	loss = value.get("loss", loss)
+	stalemate = value.get("stalemate", stalemate)

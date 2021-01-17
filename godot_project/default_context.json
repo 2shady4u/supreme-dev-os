@@ -1,18 +1,44 @@
 {
     "programs": [
-        {"id": "godot"},
-        {"id": "terminal"},
-        {"id": "supreme_dev_os"},
-        {"id": "barracuda"},
-        {"id": "pantheon_drm_certifier"},
-        {"id": "ninja"},
-        {"id": "pngeon"},
-        {"id": "minesweeper"},
-        {"id": "brendai"},
-        {"id": "tic_tac_toe"},
-        {"id": "olympus"},
-        {"id": "settings"},
-        {"id": "virtual_dev_kit"}
+        {
+            "id": "godot"
+        },
+        {
+            "id": "terminal"
+        },
+        {
+            "id": "supreme_dev_os"
+        },
+        {
+            "id": "barracuda"
+        },
+        {
+            "id": "pantheon_drm_certifier"
+        },
+        {
+            "id": "ninja"
+        },
+        {
+            "id": "brendai"
+        },
+        {
+            "id": "tic_tac_toe"
+        },
+        {
+            "id": "olympus"
+        },
+        {
+            "id": "settings"
+        }
     ],
-    "user_id": "john_doe"
+    "user_id": "john_doe",
+    "minigame_stats": [
+        {
+            "id": "tic_tac_toe"
+        },
+        {
+            "id": "minesweeper",
+            "has_stalemate": false
+        }
+    ]
 }

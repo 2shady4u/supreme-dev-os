@@ -6,6 +6,8 @@ const REFERENCE_MINIGAME_STAT := preload("res://src/autoload/MinigameStat.gd")
 
 const DEFAULT_CONTEXT_PATH := "res://default_context.json"
 
+var fetched_mails := false
+
 signal background_changed
 
 func _ready():
@@ -61,7 +63,10 @@ func set_background_texture(value : Texture):
 	user.background_texture = value
 	emit_signal("background_changed", value)
 func get_background_texture() -> Texture:
-	return user.background_texture
+	if user:
+		return user.background_texture
+	else:
+		return null
 
 ## USERS ######################################################################
 var users := {}

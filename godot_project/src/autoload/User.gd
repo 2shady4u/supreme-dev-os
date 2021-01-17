@@ -34,6 +34,10 @@ var is_root : Array setget , get_is_root
 func get_is_root() -> Array:
 	return settings.get("is_root", false)
 
+var password : String setget , get_password
+func get_password() -> String:
+	return settings.get("password", "")
+
 var portrait_texture : Texture setget , get_portrait_texture
 func get_portrait_texture() -> Texture:
 	return settings.get("portrait_texture", preload("res://graphics/startup/portrait_john.png"))

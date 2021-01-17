@@ -20,8 +20,13 @@ func _ready():
 
 func _on_switch_button_pressed():
 	var user_id : String = _id_edit.text
+	var password : String = _password_edit.text
+
 	if user_id in State.users.keys():
-		State.user_id = user_id
-		Flow.change_scene_to("startup", get_viewport())
+		var user : classUser = State.users[user_id]
+		var correct_password := user.password
+		if password == correct_password or correct_password.empty():
+			State.user_id = user_id
+			Flow.change_scene_to("startup", get_viewport())
 
 	_status_label.visible = true
