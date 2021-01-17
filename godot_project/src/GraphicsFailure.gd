@@ -13,4 +13,4 @@ func _input(event : InputEvent) -> void:
 		$BootTimer.stop()
 
 func _on_boot_timer_timeout():
-	Flow.change_scene_to("boot")
+	Flow.change_scene_to("boot", get_viewport())

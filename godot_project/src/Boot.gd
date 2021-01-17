@@ -10,9 +10,9 @@ func _input(event : InputEvent):
 	if event.is_action_pressed("restart"):
 		var barracuda : classProgram = State.get_program_by_id("barracuda")
 		if barracuda and barracuda.is_installed:
-			Flow.change_scene_to("startup")
+			Flow.change_scene_to("startup", get_viewport())
 		else:
-			Flow.change_scene_to("graphics_failure")
+			Flow.change_scene_to("graphics_failure", get_viewport())
 
 func _on_login_succeeded():
 	$PC/HB/VB/LeftTab.current_tab = 1

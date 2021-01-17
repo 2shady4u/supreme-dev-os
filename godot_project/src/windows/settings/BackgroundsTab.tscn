@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/windows/settings/BackgroundThumbnail.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/windows/settings/FileDialog.gd" type="Script" id=2]
+[ext_resource path="res://src/windows/settings/BackgroundsTab.gd" type="Script" id=3]
+
+[node name="BackgroundsTab" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MC" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_top = 12
+custom_constants/margin_bottom = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+margin_top = 12.0
+margin_right = 1024.0
+margin_bottom = 564.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MC/VB"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Choose a background!"
+align = 1
+valign = 1
+
+[node name="BrowseButton" type="Button" parent="MC/VB"]
+margin_left = 433.0
+margin_top = 38.0
+margin_right = 591.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 4
+text = "Browse for Background"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MC/VB"]
+margin_top = 82.0
+margin_right = 1024.0
+margin_bottom = 508.0
+size_flags_vertical = 3
+
+[node name="Grid" type="GridContainer" parent="MC/VB/ScrollContainer"]
+margin_left = 320.0
+margin_right = 704.0
+margin_bottom = 426.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundThumbnail" parent="MC/VB/ScrollContainer/Grid" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 120.0
+margin_bottom = 67.0
+
+[node name="BackgroundThumbnail2" parent="MC/VB/ScrollContainer/Grid" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 132.0
+margin_right = 252.0
+margin_bottom = 67.0
+
+[node name="BackgroundThumbnail3" parent="MC/VB/ScrollContainer/Grid" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 264.0
+margin_right = 384.0
+margin_bottom = 67.0
+
+[node name="BackgroundThumbnail4" parent="MC/VB/ScrollContainer/Grid" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 79.0
+margin_right = 120.0
+margin_bottom = 146.0
+
+[node name="BackgroundThumbnail5" parent="MC/VB/ScrollContainer/Grid" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 132.0
+margin_top = 79.0
+margin_right = 252.0
+margin_bottom = 146.0
+
+[node name="ConfirmButton" type="Button" parent="MC/VB"]
+margin_left = 452.0
+margin_top = 532.0
+margin_right = 571.0
+margin_bottom = 552.0
+size_flags_horizontal = 6
+disabled = true
+text = "Confirm Changes"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -157.5
+margin_top = -128.0
+margin_right = 157.5
+margin_bottom = 128.0
+rect_min_size = Vector2( 256, 256 )
+window_title = "Open a File"
+mode = 0
+access = 1
+current_dir = "user://"
+current_path = "user://"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

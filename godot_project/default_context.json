@@ -6,8 +6,13 @@
         {"id": "barracuda"},
         {"id": "pantheon_drm_certifier"},
         {"id": "ninja"},
+        {"id": "pngeon"},
+        {"id": "minesweeper"},
         {"id": "brendai"},
         {"id": "tic_tac_toe"},
-        {"id": "olympus"}
-    ]
+        {"id": "olympus"},
+        {"id": "settings"},
+        {"id": "virtual_dev_kit"}
+    ],
+    "user_id": "john_doe"
 }

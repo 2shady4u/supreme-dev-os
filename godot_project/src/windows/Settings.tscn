@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/windows/settings/AccountTab.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/windows/base/ProgramPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/windows/settings/BackgroundsTab.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/windows/Settings.gd" type="Script" id=4]
+[ext_resource path="res://src/windows/settings/SettingsButton.gd" type="Script" id=5]
+[ext_resource path="res://src/windows/settings/SettingsTabContainer.gd" type="Script" id=6]
+
+[node name="Settings" instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -180.0
+margin_right = 300.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 600, 360 )
+script = ExtResource( 4 )
+
+[node name="PC" parent="VB" index="0"]
+margin_right = 600.0
+
+[node name="HB" parent="VB/PC" index="0"]
+margin_right = 593.0
+
+[node name="MinimizeButton" parent="VB/PC/HB" index="1"]
+margin_left = 542.0
+margin_right = 558.0
+
+[node name="CloseButton" parent="VB/PC/HB" index="2"]
+margin_left = 570.0
+margin_right = 586.0
+
+[node name="HB" type="HBoxContainer" parent="VB" index="1"]
+margin_top = 34.0
+margin_right = 600.0
+margin_bottom = 360.0
+size_flags_vertical = 3
+
+[node name="VB" type="VBoxContainer" parent="VB/HB" index="0"]
+margin_right = 198.0
+margin_bottom = 326.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VB/HB/VB" index="0"]
+margin_right = 198.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+text = "Settings"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VB/HB/VB" index="1"]
+margin_top = 36.0
+margin_right = 198.0
+margin_bottom = 326.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+
+[node name="leftVB" type="VBoxContainer" parent="VB/HB/VB/ScrollContainer" index="0"]
+margin_right = 198.0
+margin_bottom = 290.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="BackgroundsButton" type="Button" parent="VB/HB/VB/ScrollContainer/leftVB" index="0"]
+margin_left = 35.0
+margin_top = 95.0
+margin_right = 163.0
+margin_bottom = 143.0
+rect_min_size = Vector2( 128, 48 )
+size_flags_horizontal = 4
+text = "Backgrounds"
+script = ExtResource( 5 )
+
+[node name="AccountButton" type="Button" parent="VB/HB/VB/ScrollContainer/leftVB" index="1"]
+margin_left = 35.0
+margin_top = 147.0
+margin_right = 163.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 128, 48 )
+size_flags_horizontal = 4
+text = "Account"
+script = ExtResource( 5 )
+tab_type = 1
+
+[node name="SettingsTabContainer" type="TabContainer" parent="VB/HB" index="1"]
+margin_left = 202.0
+margin_right = 600.0
+margin_bottom = 326.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+tabs_visible = false
+script = ExtResource( 6 )
+
+[node name="BackgroundsTab" parent="VB/HB/SettingsTabContainer" index="0" instance=ExtResource( 3 )]
+visible = false
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="AccountTab" parent="VB/HB/SettingsTabContainer" index="1" instance=ExtResource( 1 )]
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0

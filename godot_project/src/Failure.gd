@@ -17,7 +17,7 @@ func _input(event : InputEvent) -> void:
 		$BootTimer.start()
 	if event.is_action_released("restart"):
 		$BootTimer.stop()
-		Flow.change_scene_to("startup")
+		Flow.change_scene_to("startup", get_viewport())
 
 func _on_boot_timer_timeout():
-	Flow.change_scene_to("boot")
+	Flow.change_scene_to("boot", get_viewport())

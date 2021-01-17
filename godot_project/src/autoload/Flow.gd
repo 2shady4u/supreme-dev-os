@@ -1,16 +1,16 @@
 # Autoload script responsible for interacting with external resources and controlling the game flow.
 extends Node
 
-enum STATE {STARTUP, GAME, FAILURE, BOOT}
-
-const DATA_PATH := "res://resources/data.json"
+enum STATE {STARTUP, GAME, FAILURE, BOOT, GODOT_EDITOR}
 
 var mainframe := {
 	"godot": 3.1,
 	"pantheon_drm_certifier": 1.3,
 	"enigma_encryptor": 3.6,
 	"pngeon": 66.6,
-	"barracuda": 0.3
+	"barracuda": 0.3,
+	"minesweeper": 2.3,
+	"virtual_dev_kit": 1.0
 }
 var failure_message := "NO CRASH!"
 
@@ -19,8 +19,8 @@ var _state_dict := {
 		"packed_scene": preload("res://src/Startup.tscn"),
 		"state": STATE.STARTUP
 		},
-	"game": {
-		"packed_scene": preload("res://src/Game.tscn"),
+	"desktop": {
+		"packed_scene": preload("res://src/Desktop.tscn"),
 		"state": STATE.GAME
 		},
 	"failure": {
@@ -34,6 +34,10 @@ var _state_dict := {
 	"graphics_failure": {
 		"packed_scene": preload("res://src/GraphicsFailure.tscn"),
 		"state": STATE.BOOT
+		},
+	"godot_editor": {
+		"packed_scene": preload("res://src/GodotEditor.tscn"),
+		"state": STATE.GODOT_EDITOR
 		}
 	}
 var _flow_state : int = STATE.STARTUP
@@ -41,27 +45,24 @@ var _flow_state : int = STATE.STARTUP
 func _ready():
 	randomize()
 
-func change_scene_to(key : String) -> void:
+func change_scene_to(key : String, viewport : Viewport) -> void:
 	if _state_dict.has(key):
 		var state_settings : Dictionary = _state_dict[key]
 		var packed_scene : PackedScene = state_settings.packed_scene
 		_flow_state = state_settings.state
 
-		var error := get_tree().change_scene_to(packed_scene)
-		get_tree().paused = false
+		var error := OK
+		if viewport == get_tree().get_root():
+			error = get_tree().change_scene_to(packed_scene)
+		elif viewport is classVirtualViewport:
+			error = viewport.change_scene_to(packed_scene)
+
 		if error != OK:
 			push_error("Failed to change scene to '{0}'.".format([key]))
 		else:
 			print("Succesfully changed scene to '{0}'.".format([key]))
 	else:
 		push_error("Requested scene '{0}' was not recognized... ignoring call for changing scene.".format([key]))
-
-func get_program_value(id : String, key : String, default):
-	if PROGRAM_SETTINGS.has(id):
-		var data : Dictionary = PROGRAM_SETTINGS[id]
-		return data.get(key, default)
-	else:
-		return default
 
 # STATIC FUNCTIONS
 static func load_JSON(path : String) -> Dictionary:
@@ -105,18 +106,36 @@ static func save_TXT(path : String, content : String) -> void:
 	else:
 		push_error("Failed to open '{0}', check file availability!".format([path]))
 
+# Backgrounds that are available on every user system!!!
+const DEFAULT_BACKGROUNDS := [
+	preload("res://graphics/backgrounds/background1.jpg"),
+	preload("res://graphics/backgrounds/background2.jpg"),
+	preload("res://graphics/backgrounds/background3.jpg"),
+	preload("res://graphics/backgrounds/background4.jpg"),
+	preload("res://graphics/backgrounds/background5.jpg")
+]
+
 const USER_SETTINGS := {
-	"default": {
+	"john_doe": {
 		"name": "John Doe",
-		"portrait_texture": ""
+		"portrait_texture": preload("res://graphics/startup/portrait_john.png"),
+		"greeting": preload("res://resources/brenda/greetings/default_greeting.ogg")
 	},
 	"lucas_tillborg": {
 		"name": "Lucas Tillborg",
-		"portrait_texture": ""
+		"portrait_texture": preload("res://graphics/startup/portrait_lucas.png"),
+		"greeting": preload("res://resources/brenda/greetings/lucas_greeting.ogg")
 	},
 	"andrew_pantheon": {
+		"is_root": true,
 		"name": "Andrew Pantheon",
-		"portrait_texture": ""
+		"portrait_texture": preload("res://graphics/startup/portrait_andrew.png"),
+		"greeting": preload("res://resources/brenda/greetings/andrew_greeting.ogg")
+	},
+	"brock_zhu": {
+		"name": "Brock Zhu",
+		"portrait_texture": preload("res://graphics/startup/portrait_andrew.png"),
+		"greeting": preload("res://resources/brenda/greetings/default_greeting.ogg")
 	}
 }
 
@@ -125,27 +144,58 @@ const PROGRAM_SETTINGS := {
 		"extension": "exe",
 		"name": "godot",
 		"default_version": 2.1,
+		"packed_scene": preload("res://src/windows/Godot.tscn"),
 		"launch_dependencies": [
 			{
 				"id": "pantheon_drm_certifier",
-				"minimum_version": 1.3,
+				"minimum_version": 1.2,
 				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
 			},
 			{
 				"id": "barracuda",
-				"minimum_version": 0.3,
+				"minimum_version": 0.2,
 				"failure_message": "Failed to initialize Barracuda X99-A graphics driver (v0.2)\nProgram `Godot.exe` requires minimum version 0.3"
 			}
 		],
 		"icon_texture": preload("res://icon.png"),
 		"description": "A game engine for creating both 2D and 3D games"
 	},
+	"settings": {
+		"packed_scene": preload("res://src/windows/Settings.tscn"),
+		"show_on_list": false,
+		"show_on_desktop": false,
+		"show_on_boot": true,
+	},
 	"terminal": {
 		"extension": "exe",
 		"name": "terminal",
 		"default_version": 1.56,
+		"packed_scene": preload("res://src/windows/Terminal.tscn"),
 		"icon_texture": preload("res://graphics/program_icons/terminal.png"),
 		"description": "Patheon Inc. certified command console"
+	},
+	"virtual_dev_kit": {
+		"extension": "exe",
+		"name": "Pantheon Vision",
+		"default_version": 1.0,
+		"packed_scene": preload("res://src/windows/VirtualDevKit.tscn"),
+		"icon_texture": preload("res://graphics/program_icons/virtual_dev_kit.png"),
+		"description": "Development kit for making Godot games in Pantheon Vision (c)"
+	},
+	"minesweeper": {
+		"extension": "exe",
+		"name": "Minesweeper",
+		"default_version": 2.3,
+		"icon_texture": preload("res://graphics/program_icons/minesweeper.png"),
+		"packed_scene": preload("res://src/windows/Minesweeper.tscn"),
+		"description": "Classical minesweeper game to play when waiting for CI/CD completion",
+		"launch_dependencies": [
+			{
+				"id": "pantheon_drm_certifier",
+				"minimum_version": 1.2,
+				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
+			}
+		],
 	},
 	"pantheon_drm_certifier": {
 		"description": "Patheon Inc. always-on DRM certification module",
@@ -181,6 +231,10 @@ const PROGRAM_SETTINGS := {
 			"id": "change_volume",
 			"inputs": ["volume_percentage"],
 			"description": "Change the master volume of the NINJA MASTER sound card.\nInput values are clamped between 0 and 100."
+		},{
+			"id": "change_pitch",
+			"inputs": ["pitch_scale"],
+			"description": "Change the master pitch scale of the NINJA MASTER sound card.\nInput values are clamped between 0 and 4."
 		}]
 	},
 	"brendai": {
@@ -192,7 +246,20 @@ const PROGRAM_SETTINGS := {
 		"description": "State-of-the-Art AI for companionship during game development",
 		"icon_texture": preload("res://graphics/program_icons/brendai.png"),
 		"slogan": "Your companion till the very end",
-		"can_be_uninstalled" : true
+		"can_be_uninstalled" : true,
+		"hidden_commands": [{
+			"id": "minigame_stats",
+			"inputs": [],
+			"description": "Print out win/loss/stalemate statistics for all BrendAI approved minigames."
+		},{
+			"id": "fetch_mail",
+			"inputs": [],
+			"description": "Fetch latest mails from the Panther mail server."
+		},{
+			"id": "service_number",
+			"inputs": [],
+			"description": "Print out the service number of this device."
+		}]
 	},
 	"tic_tac_toe": {
 		"extension": "exe",
@@ -200,10 +267,11 @@ const PROGRAM_SETTINGS := {
 		"default_version": 0.1,
 		"description": "Classical tic-tac-toe game to play during dev burn-out against BrendAI",
 		"icon_texture": preload("res://graphics/program_icons/tic_tac_toe.png"),
+		"packed_scene": preload("res://src/windows/TicTacToe.tscn"),
 		"launch_dependencies": [
 			{
 				"id": "pantheon_drm_certifier",
-				"minimum_version": 1.3,
+				"minimum_version": 1.2,
 				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
 			},
 			{
@@ -219,10 +287,11 @@ const PROGRAM_SETTINGS := {
 		"default_version": 4.12,
 		"description": "Default file viewer & browser",
 		"icon_texture": preload("res://graphics/program_icons/olympus.png"),
+		"packed_scene": preload("res://src/windows/Olympus.tscn"),
 		"launch_dependencies": [
 			{
 				"id": "pantheon_drm_certifier",
-				"minimum_version": 1.3,
+				"minimum_version": 1.2,
 				"failure_message": "Pantheon Inc. DRM certification module (v1.2) requires urgent update!\nPlease update immediately so satisfactory user experience can be ensured."
 			}
 		],

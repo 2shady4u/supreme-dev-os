@@ -1,0 +1,169 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://graphics/startup/portrait.png" type="Texture" id=1]
+[ext_resource path="res://src/windows/settings/AccountTab.gd" type="Script" id=2]
+
+[node name="AccountTab" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+tab_type = 1
+
+[node name="MC" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+margin_right = 1024.0
+margin_bottom = 576.0
+custom_constants/separation = 24
+alignment = 1
+
+[node name="HB" type="HBoxContainer" parent="MC/VB"]
+margin_top = 138.0
+margin_right = 1024.0
+margin_bottom = 266.0
+alignment = 1
+
+[node name="VB" type="VBoxContainer" parent="MC/VB/HB"]
+margin_left = 175.0
+margin_right = 334.0
+margin_bottom = 128.0
+size_flags_horizontal = 6
+custom_constants/separation = 24
+alignment = 1
+
+[node name="Label" type="Label" parent="MC/VB/HB/VB"]
+margin_top = 29.0
+margin_right = 159.0
+margin_bottom = 43.0
+text = "Currently logged in as:"
+
+[node name="VB" type="VBoxContainer" parent="MC/VB/HB/VB"]
+margin_top = 67.0
+margin_right = 159.0
+margin_bottom = 99.0
+
+[node name="NameLabel" type="Label" parent="MC/VB/HB/VB/VB"]
+margin_right = 159.0
+margin_bottom = 14.0
+text = "Name: Andrew Pantheon"
+align = 1
+valign = 1
+
+[node name="IdLabel" type="Label" parent="MC/VB/HB/VB/VB"]
+margin_top = 18.0
+margin_right = 159.0
+margin_bottom = 32.0
+text = "ID: andrew_patheon1228"
+align = 1
+valign = 1
+
+[node name="PortraitRect" type="TextureRect" parent="MC/VB/HB"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+texture = ExtResource( 1 )
+stretch_mode = 6
+
+[node name="VB" type="VBoxContainer" parent="MC/VB"]
+margin_top = 290.0
+margin_right = 1024.0
+margin_bottom = 438.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="MC/VB/VB"]
+margin_left = 411.0
+margin_right = 612.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+text = "Is this not you? Switch account:"
+align = 1
+valign = 1
+
+[node name="VB" type="VBoxContainer" parent="MC/VB/VB"]
+margin_top = 30.0
+margin_right = 1024.0
+margin_bottom = 82.0
+
+[node name="IdHB" type="HBoxContainer" parent="MC/VB/VB/VB"]
+margin_right = 1024.0
+margin_bottom = 24.0
+alignment = 1
+
+[node name="IdLabel" type="Label" parent="MC/VB/VB/VB/IdHB"]
+margin_left = 382.0
+margin_top = 5.0
+margin_right = 510.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 128, 0 )
+text = "ID:"
+align = 1
+valign = 1
+
+[node name="IdEdit" type="LineEdit" parent="MC/VB/VB/VB/IdHB"]
+margin_left = 514.0
+margin_right = 642.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="PasswordHB" type="HBoxContainer" parent="MC/VB/VB/VB"]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 52.0
+alignment = 1
+
+[node name="PasswordLabel" type="Label" parent="MC/VB/VB/VB/PasswordHB"]
+margin_left = 382.0
+margin_top = 5.0
+margin_right = 510.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 128, 0 )
+text = "Password:"
+align = 1
+valign = 1
+
+[node name="PasswordEdit" type="LineEdit" parent="MC/VB/VB/VB/PasswordHB"]
+margin_left = 514.0
+margin_right = 642.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="Control" type="Control" parent="MC/VB/VB"]
+margin_top = 98.0
+margin_right = 1024.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 0, 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusLabel" type="Label" parent="MC/VB/VB/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "ID and/or password is not recognized!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwitchButton" type="Button" parent="MC/VB/VB"]
+margin_left = 448.0
+margin_top = 128.0
+margin_right = 576.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 4
+text = "Switch account"

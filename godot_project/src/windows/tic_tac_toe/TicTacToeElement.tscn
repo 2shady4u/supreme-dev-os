@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/windows/tic_tac_toe/TicTacToeElement.gd" type="Script" id=1]
+[ext_resource path="res://graphics/tic_tac_toe/empty.png" type="Texture" id=2]
+
+[node name="TicTacToeElement" type="TextureRect"]
+margin_right = 64.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

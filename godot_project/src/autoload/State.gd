@@ -1,8 +1,12 @@
 extends Node
 
 const REFERENCE_PROGRAM := preload("res://src/autoload/Program.gd")
+const REFERENCE_USER := preload("res://src/autoload/User.gd")
+const REFERENCE_MINIGAME_STAT := preload("res://src/autoload/MinigameStat.gd")
 
 const DEFAULT_CONTEXT_PATH := "res://default_context.json"
+
+signal background_changed
 
 func _ready():
 	var _error : int = load_stateJSON()
@@ -22,11 +26,55 @@ func load_stateJSON(path : String = DEFAULT_CONTEXT_PATH) -> int:
 
 func load_state_from_context(context : Dictionary) -> void:
 	programs.clear()
+	minigame_stats.clear()
+	users.clear()
+
+	init_users()
 
 	for program_context in context.get("programs", []):
 		add_program_from_context(program_context)
 
-## PROGRAMS ####################################################################
+	for minigame_stat_context in context.get("minigame_stats", []):
+		add_minigame_stat_from_context(minigame_stat_context)
+
+	self.user_id = context.get("user_id", user_id)
+
+## CURRENT USER ###############################################################
+var user_id := "john_doe" setget set_user_id
+func set_user_id(value : String):
+	user_id = value
+	if users.has(user_id):
+		user = users[user_id]
+	else:
+		push_error("User with id is not present in the known group of users!")
+
+var user : classUser
+
+func get_user_by_viewport(viewport : Viewport):
+	if viewport == get_tree().get_root():
+		return user
+	else:
+		return users["brock_zhu"]
+
+var background_texture : Texture setget set_background_texture, get_background_texture
+func set_background_texture(value : Texture):
+	user.background_texture = value
+	emit_signal("background_changed", value)
+func get_background_texture() -> Texture:
+	return user.background_texture
+
+## USERS ######################################################################
+var users := {}
+
+func init_users() -> void:
+	for id in Flow.USER_SETTINGS.keys():
+		var _user := REFERENCE_USER.new()
+		_user.id = id
+
+		print("Adding registered user with id '{0}' to State!".format([id]))
+		users[id] = _user
+
+## PROGRAMS ###################################################################
 var programs := {}
 
 func add_program_from_context(program_context : Dictionary) -> void:
@@ -57,6 +105,32 @@ func has_program(program_id : String) -> bool:
 		return true
 	else:
 		return false
+
+# MINIGAME STATISTICS #########################################################
+var minigame_stats := {}
+
+func add_minigame_stat_from_context(minigame_stat_context : Dictionary) -> void:
+	var minigame_stat := REFERENCE_MINIGAME_STAT.new()
+	minigame_stat.context = minigame_stat_context
+
+	minigame_stats[minigame_stat.id] = minigame_stat
+
+func add_minigame_stat_by_id(minigame_id : String) -> void:
+	var _minigame_stat := add_and_return_minigame_stat_by_id(minigame_id)
+
+func add_and_return_minigame_stat_by_id(minigame_id : String) -> classMinigameStat:
+	var minigame_stat := REFERENCE_MINIGAME_STAT.new()
+	minigame_stat.id = minigame_id
+
+	print("Adding brand-new minigame statistic with id '{0}' to State!".format([minigame_id]))
+	minigame_stats[minigame_stat.id] = minigame_stat
+
+	return minigame_stat
+
+func get_minigame_stat_by_id(minigame_id : String) -> classMinigameStat:
+	if minigame_id in minigame_stats.keys():
+		return minigame_stats[minigame_id]
+	return null
 
 # CRASH LOGS  ##################################################################
 

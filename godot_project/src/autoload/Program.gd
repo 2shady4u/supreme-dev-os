@@ -2,6 +2,8 @@ class_name classProgram
 extends Reference
 
 var id := ""
+var settings := {}
+
 var version := 0.0
 # Some drivers can be uninstalled by still need to show up!
 var is_installed := true
@@ -13,6 +15,8 @@ func set_context(value : Dictionary) -> void:
 		return
 
 	id = value.id
+	settings = Flow.PROGRAM_SETTINGS.get(id, {})
+
 	version = value.get("version", self.default_version)
 
 func check_launch_dependencies() -> bool:
@@ -32,48 +36,52 @@ func check_launch_dependencies() -> bool:
 # These are all constants derived from reporting.JSON and should be treated as such!
 var name : String setget , get_name
 func get_name() -> String:
-	return Flow.get_program_value(id, "name", "MISSING NAME")
+	return settings.get("name", "MISSING NAME")
 
 var extension : String setget , get_extension
 func get_extension() -> String:
-	return Flow.get_program_value(id, "extension", "MISSING EXTENSION")
+	return settings.get("extension", "MISSING EXTENSION")
 
 var slogan : String setget , get_slogan
 func get_slogan() -> String:
-	return Flow.get_program_value(id, "slogan", "MISSING SLOGAN")
+	return settings.get("slogan", "MISSING SLOGAN")
 
 var description : float setget , get_description
 func get_description() -> float:
-	return Flow.get_program_value(id, "description", "MISSING DESCRIPTION")
+	return settings.get("description", "MISSING DESCRIPTION")
 
 var icon_texture : String setget , get_icon_texture
 func get_icon_texture() -> String:
-	return Flow.get_program_value(id, "icon_texture", preload("res://icon.png"))
+	return settings.get("icon_texture", preload("res://icon.png"))
 
 var show_on_list : bool setget , get_show_on_list
 func get_show_on_list() -> bool:
-	return Flow.get_program_value(id, "show_on_list", true)
+	return settings.get("show_on_list", true)
 
 var show_on_desktop : bool setget , get_show_on_desktop
 func get_show_on_desktop() -> bool:
-	return Flow.get_program_value(id, "show_on_desktop", true)
+	return settings.get("show_on_desktop", true)
 
 var show_on_boot : bool setget , get_show_on_boot
 func get_show_on_boot() -> bool:
-	return Flow.get_program_value(id, "show_on_boot", false)
+	return settings.get("show_on_boot", false)
 
 var default_version : bool setget , get_default_version
 func get_default_version() -> bool:
-	return Flow.get_program_value(id, "default_version", true)
+	return settings.get("default_version", true)
 
 var launch_dependencies : Array setget , get_launch_dependencies
 func get_launch_dependencies() -> Array:
-	return Flow.get_program_value(id, "launch_dependencies", [])
+	return settings.get("launch_dependencies", [])
 
 var hidden_commands : Array setget , get_hidden_commands
 func get_hidden_commands() -> Array:
-	return Flow.get_program_value(id, "hidden_commands", [])
+	return settings.get("hidden_commands", [])
 
 var can_be_uninstalled : Array setget , get_can_be_uninstalled
 func get_can_be_uninstalled() -> Array:
-	return Flow.get_program_value(id, "can_be_uninstalled", false)
+	return settings.get("can_be_uninstalled", false)
+
+var packed_scene : PackedScene setget , get_packed_scene
+func get_packed_scene() -> PackedScene:
+	return settings.get("packed_scene", null)

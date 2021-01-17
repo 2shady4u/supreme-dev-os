@@ -1,0 +1,370 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/GodotEditor.gd" type="Script" id=1]
+[ext_resource path="res://graphics/minimize_icon.png" type="Texture" id=2]
+[ext_resource path="res://graphics/close_icon.png" type="Texture" id=3]
+[ext_resource path="res://graphics/waiting_for_response.png" type="Texture" id=4]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="GodotEditor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1024, 576 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PC" type="PanelContainer" parent="Panel/VB"]
+margin_right = 1024.0
+margin_bottom = 30.0
+
+[node name="HB" type="HBoxContainer" parent="Panel/VB/PC"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 23.0
+custom_constants/separation = 12
+
+[node name="HeaderLabel" type="Label" parent="Panel/VB/PC/HB"]
+margin_top = 1.0
+margin_right = 954.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "Godot Engine"
+
+[node name="MinimizeButton" type="TextureButton" parent="Panel/VB/PC/HB"]
+margin_left = 966.0
+margin_right = 982.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="Panel/VB/PC/HB"]
+margin_left = 994.0
+margin_right = 1010.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="HB" type="HBoxContainer" parent="Panel/VB"]
+margin_top = 34.0
+margin_right = 1024.0
+margin_bottom = 54.0
+
+[node name="SceneButton" type="Button" parent="Panel/VB/HB"]
+margin_right = 50.0
+margin_bottom = 20.0
+text = "Scene"
+flat = true
+
+[node name="ProjectButton" type="Button" parent="Panel/VB/HB"]
+margin_left = 54.0
+margin_right = 111.0
+margin_bottom = 20.0
+text = "Project"
+flat = true
+
+[node name="DebugButton" type="Button" parent="Panel/VB/HB"]
+margin_left = 115.0
+margin_right = 168.0
+margin_bottom = 20.0
+text = "Debug"
+flat = true
+
+[node name="EditorButton" type="Button" parent="Panel/VB/HB"]
+margin_left = 172.0
+margin_right = 221.0
+margin_bottom = 20.0
+text = "Editor"
+flat = true
+
+[node name="HelpButton" type="Button" parent="Panel/VB/HB"]
+margin_left = 225.0
+margin_right = 267.0
+margin_bottom = 20.0
+text = "Help"
+flat = true
+
+[node name="HB2" type="HBoxContainer" parent="Panel/VB"]
+margin_top = 58.0
+margin_right = 1024.0
+margin_bottom = 572.0
+size_flags_vertical = 3
+custom_constants/separation = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VB/HB2"]
+margin_right = 250.0
+margin_bottom = 514.0
+size_flags_horizontal = 3
+
+[node name="TabContainer" type="TabContainer" parent="Panel/VB/HB2/VBoxContainer"]
+margin_right = 250.0
+margin_bottom = 255.0
+size_flags_vertical = 3
+tab_align = 0
+
+[node name="Scene" type="Control" parent="Panel/VB/HB2/VBoxContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Import" type="Control" parent="Panel/VB/HB2/VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="TabContainer2" type="TabContainer" parent="Panel/VB/HB2/VBoxContainer"]
+margin_top = 259.0
+margin_right = 250.0
+margin_bottom = 514.0
+size_flags_vertical = 3
+tab_align = 0
+
+[node name="FileSystem" type="Control" parent="Panel/VB/HB2/VBoxContainer/TabContainer2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VB/HB2"]
+margin_left = 262.0
+margin_right = 762.0
+margin_bottom = 514.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TabContainer2" type="TabContainer" parent="Panel/VB/HB2/VBoxContainer2"]
+margin_right = 500.0
+margin_bottom = 476.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+tab_align = 0
+
+[node name="[empty]" type="Control" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -8.0
+margin_bottom = -36.0
+rect_min_size = Vector2( 492, 440 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]/ViewportContainer"]
+size = Vector2( 492, 440 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Spatial" type="Spatial" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]/ViewportContainer/Viewport"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]/ViewportContainer/Viewport/Spatial"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="Panel/VB/HB2/VBoxContainer2/TabContainer2/[empty]/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.07649 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VB/HB2/VBoxContainer2"]
+margin_top = 480.0
+margin_right = 500.0
+margin_bottom = 514.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 493.0
+margin_bottom = 27.0
+
+[node name="OutputButton" type="Button" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+margin_right = 57.0
+margin_bottom = 20.0
+text = "Output"
+flat = true
+
+[node name="DebuggerButton" type="Button" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+margin_left = 61.0
+margin_right = 134.0
+margin_bottom = 20.0
+text = "Debugger"
+flat = true
+
+[node name="AudioButton" type="Button" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+margin_left = 138.0
+margin_right = 187.0
+margin_bottom = 20.0
+text = "Audio"
+flat = true
+
+[node name="AnimationButton" type="Button" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+margin_left = 191.0
+margin_right = 269.0
+margin_bottom = 20.0
+text = "Animation"
+flat = true
+
+[node name="Label" type="Label" parent="Panel/VB/HB2/VBoxContainer2/PanelContainer/HBoxContainer"]
+margin_left = 273.0
+margin_top = 3.0
+margin_right = 486.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "3.1.stable"
+align = 2
+
+[node name="TabContainer3" type="TabContainer" parent="Panel/VB/HB2"]
+margin_left = 774.0
+margin_right = 1024.0
+margin_bottom = 514.0
+size_flags_horizontal = 3
+tab_align = 0
+
+[node name="Inspector" type="Control" parent="Panel/VB/HB2/TabContainer3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Node" type="Control" parent="Panel/VB/HB2/TabContainer3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VB" type="VBoxContainer" parent="Panel/VB"]
+margin_top = 576.0
+margin_right = 1024.0
+margin_bottom = 576.0
+
+[node name="HB" type="HBoxContainer" parent="Panel/VB/VB"]
+margin_right = 1024.0
+
+[node name="CrashControl" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CrashControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0.196078 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingRect" type="TextureRect" parent="CrashControl"]
+modulate = Color( 1, 1, 1, 0.588235 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 32, 32 )
+rect_pivot_offset = Vector2( 16, 16 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndControl" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrashVB" type="VBoxContainer" parent="EndControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 64
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndLabel" type="Label" parent="EndControl/CrashVB"]
+margin_top = 194.0
+margin_right = 1024.0
+margin_bottom = 208.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "THE END"
+align = 1
+valign = 1
+
+[node name="CreditsLabel" type="Label" parent="EndControl/CrashVB"]
+margin_top = 272.0
+margin_right = 1024.0
+margin_bottom = 303.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Made by Piet Bronders
+For Godot Wild Jam 29"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="EndControl/CrashVB"]
+margin_top = 367.0
+margin_right = 1024.0
+margin_bottom = 381.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Press `R` to go back to the login screen"
+align = 1
+valign = 1
+
+[node name="LoadingTween" type="Tween" parent="."]
+
+[node name="EndTween" type="Tween" parent="."]
+
+[node name="EndTimer" type="Timer" parent="."]
+one_shot = true

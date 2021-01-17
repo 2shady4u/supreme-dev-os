@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/windows/terminal/TerminalHeader.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/windows/terminal/TerminalEdit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/windows/base/ProgramPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/windows/Terminal.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Terminal" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -240.0
+margin_right = 320.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 640, 480 )
+script = ExtResource( 4 )
+
+[node name="PC" parent="VB" index="0"]
+margin_right = 640.0
+
+[node name="HB" parent="VB/PC" index="0"]
+margin_right = 633.0
+
+[node name="MinimizeButton" parent="VB/PC/HB" index="1"]
+margin_left = 582.0
+margin_right = 598.0
+
+[node name="CloseButton" parent="VB/PC/HB" index="2"]
+margin_left = 610.0
+margin_right = 626.0
+
+[node name="SC" type="ScrollContainer" parent="VB" index="1"]
+margin_top = 34.0
+margin_right = 640.0
+margin_bottom = 480.0
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 1 )
+follow_focus = true
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="VB/SC" index="0"]
+margin_right = 640.0
+margin_bottom = 446.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TerminalHeader" parent="VB/SC/VB" index="0" instance=ExtResource( 1 )]
+margin_right = 640.0
+
+[node name="TerminalEdit" parent="VB/SC/VB" index="1" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 77.0
+margin_right = 640.0
+margin_bottom = 91.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]

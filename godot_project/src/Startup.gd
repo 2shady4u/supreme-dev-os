@@ -3,6 +3,8 @@ extends Control
 const DURATION := 1.0
 const BOOT_INTERVAL := 6.0
 
+onready var _tween := $Tween
+
 var loading_index := 0
 var is_loading := false
 
@@ -13,17 +15,19 @@ func _ready():
 
 	$BootTimer.wait_time = BOOT_INTERVAL
 
-	var supreme_dev_os : classProgram = State.get_program_by_id("supreme_dev_os")
-	$VB/Label.text = "Supreme Dev OS\nversion {0}".format([supreme_dev_os.version])
+	var user : classUser = State.user
+	$VB/VB/TextureRect/PortraitRect.texture = user.portrait_texture
+	$BackgroundRect.texture = user.background_texture
+	$VB/VB/NameLabel.text = user.name
 
 	$VB/LoadingControl/VB.visible = false
 
 func _on_log_in_button_pressed() -> void:
 	$VB/LogInButton.disabled = true
 
-	$Tween.interpolate_property($VB/LoadingControl/VB/TextureRect, "rect_rotation", 0, 360, DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.repeat = true
-	$Tween.start()
+	_tween.interpolate_property($VB/LoadingControl/VB/TextureRect, "rect_rotation", 0, 360, DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_tween.repeat = true
+	_tween.start()
 
 	is_loading = true
 	$BootTimer.stop()
@@ -40,13 +44,13 @@ func load_next_stage():
 		$LoadingTimer.start()
 		loading_index += 1
 	else:
-		Flow.change_scene_to("game")
+		Flow.change_scene_to("desktop", get_viewport())
 
 func _on_loading_timer_timeout():
 	load_next_stage()
 
 func _on_boot_timer_timeout():
-	Flow.change_scene_to("boot")
+	Flow.change_scene_to("boot", get_viewport())
 
 func _input(event):
 	if is_loading:

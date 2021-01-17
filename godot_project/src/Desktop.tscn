@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Desktop.gd" type="Script" id=1]
+[ext_resource path="res://src/base/DesktopIcon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/desktop/StartMenu.gd" type="Script" id=3]
+[ext_resource path="res://resources/brenda/greetings/default_greeting.ogg" type="AudioStream" id=4]
+[ext_resource path="res://graphics/backgrounds/background1.jpg" type="Texture" id=5]
+[ext_resource path="res://src/base/TaskbarButton.tscn" type="PackedScene" id=6]
+
+[node name="Desktop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1024, 576 )
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DesktopIcons" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DesktopIcon" parent="DesktopIcons" instance=ExtResource( 2 )]
+
+[node name="Windows" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VB" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PC" type="PanelContainer" parent="VB"]
+margin_right = 1024.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HB" type="HBoxContainer" parent="VB/PC"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 27.0
+
+[node name="StartMenu" type="MenuButton" parent="VB/PC/HB"]
+margin_right = 41.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Start"
+script = ExtResource( 3 )
+
+[node name="VSeparator" type="VSeparator" parent="VB/PC/HB"]
+margin_left = 45.0
+margin_right = 49.0
+margin_bottom = 20.0
+
+[node name="Control" type="Control" parent="VB/PC/HB"]
+margin_left = 53.0
+margin_right = 787.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SC" type="ScrollContainer" parent="VB/PC/HB/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 6.10352e-05
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Taskbar" type="HBoxContainer" parent="VB/PC/HB/Control/SC"]
+margin_right = 404.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaskbarButton6" parent="VB/PC/HB/Control/SC/Taskbar" instance=ExtResource( 6 )]
+margin_right = 98.0
+
+[node name="TaskbarButton7" parent="VB/PC/HB/Control/SC/Taskbar" instance=ExtResource( 6 )]
+margin_left = 102.0
+margin_right = 200.0
+
+[node name="TaskbarButton8" parent="VB/PC/HB/Control/SC/Taskbar" instance=ExtResource( 6 )]
+margin_left = 204.0
+margin_right = 302.0
+
+[node name="TaskbarButton9" parent="VB/PC/HB/Control/SC/Taskbar" instance=ExtResource( 6 )]
+margin_left = 306.0
+margin_right = 404.0
+
+[node name="VSeparator2" type="VSeparator" parent="VB/PC/HB"]
+margin_left = 791.0
+margin_right = 795.0
+margin_bottom = 20.0
+
+[node name="Label" type="Label" parent="VB/PC/HB"]
+margin_left = 799.0
+margin_top = 3.0
+margin_right = 1010.0
+margin_bottom = 17.0
+text = "Supreme Dev OS by Patheon Inc."
+align = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

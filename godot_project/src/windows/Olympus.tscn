@@ -1,0 +1,149 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/windows/base/ProgramPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/windows/olympus/ContentContainer.gd" type="Script" id=2]
+[ext_resource path="res://src/windows/Olympus.gd" type="Script" id=3]
+[ext_resource path="res://src/windows/olympus/FileMenu.gd" type="Script" id=4]
+[ext_resource path="res://copy_to_user/pictures/surprise.png" type="Texture" id=5]
+[ext_resource path="res://src/windows/base/FileDialog.tscn" type="PackedScene" id=6]
+
+[node name="Olympus" instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -240.0
+margin_right = 240.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 480, 480 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PC" parent="VB" index="0"]
+margin_right = 480.0
+
+[node name="HB" parent="VB/PC" index="0"]
+margin_right = 473.0
+
+[node name="MinimizeButton" parent="VB/PC/HB" index="1"]
+margin_left = 422.0
+margin_right = 438.0
+
+[node name="CloseButton" parent="VB/PC/HB" index="2"]
+margin_left = 450.0
+margin_right = 466.0
+
+[node name="VB" type="VBoxContainer" parent="VB" index="1"]
+margin_top = 34.0
+margin_right = 480.0
+margin_bottom = 480.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PC" type="PanelContainer" parent="VB/VB" index="0"]
+margin_right = 480.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="HB" type="HBoxContainer" parent="VB/VB/PC" index="0"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 473.0
+margin_bottom = 27.0
+
+[node name="FileMenu" type="MenuButton" parent="VB/VB/PC/HB" index="0"]
+margin_right = 35.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "File"
+script = ExtResource( 4 )
+
+[node name="Content" type="ScrollContainer" parent="VB/VB" index="1"]
+margin_top = 38.0
+margin_right = 480.0
+margin_bottom = 446.0
+size_flags_vertical = 3
+script = ExtResource( 2 )
+
+[node name="VB" type="VBoxContainer" parent="VB/VB/Content" index="0"]
+margin_right = 480.0
+margin_bottom = 408.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VB/VB/Content/VB" index="0"]
+visible = false
+margin_right = 468.0
+margin_bottom = 609.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "lucas.tillborg@wamail.com
+sent at 9th of January 2021
+Subject: Encroaching Deadline
+-------------------
+
+Dear Mr. Pantheon,
+
+I won't be able to finish Supreme Dev OS by the deadline.
+Everything is crashing and, with all due respect, the drivers you delivered to me are crap.
+I don't have an issue with out-sourcing part of the development process, but
+there are certain minimal standards that need to be upheld!
+
+I was promised resources, but have received none whatsoever.
+
+I need more time!
+
+Greetings,
+Lucas Tillborg
+
+ceo@pantheon.inc
+sent at 10th of January 2021
+Subject: RE: Encroaching Deadline
+-------------------
+
+Look Lucas, I'm going to be blunt with you, when I hired it wasn't because you were the best. 
+It wasn't even because you were second best.
+
+I hired you because you told me you could the job done.
+
+Respect the release deadline or there will be consequences.
+
+Andrew Pantheon
+CEO of Pantheon Incorporated"
+autowrap = true
+
+[node name="TextureRect" type="TextureRect" parent="VB/VB/Content/VB" index="1"]
+visible = false
+margin_right = 480.0
+margin_bottom = 442.0
+rect_min_size = Vector2( 360, 360 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="DefaultLabel" type="Label" parent="VB/VB/Content/VB" index="2"]
+margin_top = 197.0
+margin_right = 480.0
+margin_bottom = 211.0
+size_flags_vertical = 6
+text = "No file loaded!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" parent="." index="2" instance=ExtResource( 6 )]
+visible = false

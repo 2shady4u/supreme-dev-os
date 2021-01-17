@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/minesweeper_lose.ogg-e861af7ea364ba6a958a6bd6f7cbdcef.oggstr"
+
+[deps]
+
+source_file="res://resources/brenda/minesweeper/minesweeper_lose.ogg"
+dest_files=[ "res://.import/minesweeper_lose.ogg-e861af7ea364ba6a958a6bd6f7cbdcef.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

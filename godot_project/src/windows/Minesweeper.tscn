@@ -1,0 +1,279 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/windows/base/ProgramPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/windows/Minesweeper.gd" type="Script" id=2]
+[ext_resource path="res://src/windows/minesweeper/MinesweeperElement.tscn" type="PackedScene" id=3]
+
+[node name="Minesweeper" instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -200.0
+margin_right = 300.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 600, 400 )
+script = ExtResource( 2 )
+
+[node name="PC" parent="VB" index="0"]
+margin_right = 600.0
+
+[node name="HB" parent="VB/PC" index="0"]
+margin_right = 593.0
+
+[node name="MinimizeButton" parent="VB/PC/HB" index="1"]
+margin_left = 542.0
+margin_right = 558.0
+
+[node name="CloseButton" parent="VB/PC/HB" index="2"]
+margin_left = 570.0
+margin_right = 586.0
+
+[node name="VB" type="VBoxContainer" parent="VB" index="1"]
+margin_top = 34.0
+margin_right = 600.0
+margin_bottom = 400.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PC" type="PanelContainer" parent="VB/VB" index="0"]
+margin_left = 5.0
+margin_top = 60.0
+margin_right = 595.0
+margin_bottom = 122.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Grid" type="GridContainer" parent="VB/VB/PC" index="0"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 583.0
+margin_bottom = 55.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 24
+
+[node name="MinesweeperElement" parent="VB/VB/PC/Grid" index="0" instance=ExtResource( 3 )]
+
+[node name="MinesweeperElement2" parent="VB/VB/PC/Grid" index="1" instance=ExtResource( 3 )]
+margin_left = 24.0
+margin_right = 48.0
+
+[node name="MinesweeperElement3" parent="VB/VB/PC/Grid" index="2" instance=ExtResource( 3 )]
+margin_left = 48.0
+margin_right = 72.0
+
+[node name="MinesweeperElement4" parent="VB/VB/PC/Grid" index="3" instance=ExtResource( 3 )]
+margin_left = 72.0
+margin_right = 96.0
+
+[node name="MinesweeperElement5" parent="VB/VB/PC/Grid" index="4" instance=ExtResource( 3 )]
+margin_left = 96.0
+margin_right = 120.0
+
+[node name="MinesweeperElement6" parent="VB/VB/PC/Grid" index="5" instance=ExtResource( 3 )]
+margin_left = 120.0
+margin_right = 144.0
+
+[node name="MinesweeperElement7" parent="VB/VB/PC/Grid" index="6" instance=ExtResource( 3 )]
+margin_left = 144.0
+margin_right = 168.0
+
+[node name="MinesweeperElement8" parent="VB/VB/PC/Grid" index="7" instance=ExtResource( 3 )]
+margin_left = 168.0
+margin_right = 192.0
+
+[node name="MinesweeperElement9" parent="VB/VB/PC/Grid" index="8" instance=ExtResource( 3 )]
+margin_left = 192.0
+margin_right = 216.0
+
+[node name="MinesweeperElement10" parent="VB/VB/PC/Grid" index="9" instance=ExtResource( 3 )]
+margin_left = 216.0
+margin_right = 240.0
+
+[node name="MinesweeperElement11" parent="VB/VB/PC/Grid" index="10" instance=ExtResource( 3 )]
+margin_left = 240.0
+margin_right = 264.0
+
+[node name="MinesweeperElement12" parent="VB/VB/PC/Grid" index="11" instance=ExtResource( 3 )]
+margin_left = 264.0
+margin_right = 288.0
+
+[node name="MinesweeperElement13" parent="VB/VB/PC/Grid" index="12" instance=ExtResource( 3 )]
+margin_left = 288.0
+margin_right = 312.0
+
+[node name="MinesweeperElement14" parent="VB/VB/PC/Grid" index="13" instance=ExtResource( 3 )]
+margin_left = 312.0
+margin_right = 336.0
+
+[node name="MinesweeperElement15" parent="VB/VB/PC/Grid" index="14" instance=ExtResource( 3 )]
+margin_left = 336.0
+margin_right = 360.0
+
+[node name="MinesweeperElement16" parent="VB/VB/PC/Grid" index="15" instance=ExtResource( 3 )]
+margin_left = 360.0
+margin_right = 384.0
+
+[node name="MinesweeperElement17" parent="VB/VB/PC/Grid" index="16" instance=ExtResource( 3 )]
+margin_left = 384.0
+margin_right = 408.0
+
+[node name="MinesweeperElement18" parent="VB/VB/PC/Grid" index="17" instance=ExtResource( 3 )]
+margin_left = 408.0
+margin_right = 432.0
+
+[node name="MinesweeperElement19" parent="VB/VB/PC/Grid" index="18" instance=ExtResource( 3 )]
+margin_left = 432.0
+margin_right = 456.0
+
+[node name="MinesweeperElement20" parent="VB/VB/PC/Grid" index="19" instance=ExtResource( 3 )]
+margin_left = 456.0
+margin_right = 480.0
+
+[node name="MinesweeperElement21" parent="VB/VB/PC/Grid" index="20" instance=ExtResource( 3 )]
+margin_left = 480.0
+margin_right = 504.0
+
+[node name="MinesweeperElement22" parent="VB/VB/PC/Grid" index="21" instance=ExtResource( 3 )]
+margin_left = 504.0
+margin_right = 528.0
+
+[node name="MinesweeperElement23" parent="VB/VB/PC/Grid" index="22" instance=ExtResource( 3 )]
+margin_left = 528.0
+margin_right = 552.0
+
+[node name="MinesweeperElement24" parent="VB/VB/PC/Grid" index="23" instance=ExtResource( 3 )]
+margin_left = 552.0
+margin_right = 576.0
+
+[node name="MinesweeperElement25" parent="VB/VB/PC/Grid" index="24" instance=ExtResource( 3 )]
+margin_top = 24.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement26" parent="VB/VB/PC/Grid" index="25" instance=ExtResource( 3 )]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 48.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement27" parent="VB/VB/PC/Grid" index="26" instance=ExtResource( 3 )]
+margin_left = 48.0
+margin_top = 24.0
+margin_right = 72.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement28" parent="VB/VB/PC/Grid" index="27" instance=ExtResource( 3 )]
+margin_left = 72.0
+margin_top = 24.0
+margin_right = 96.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement29" parent="VB/VB/PC/Grid" index="28" instance=ExtResource( 3 )]
+margin_left = 96.0
+margin_top = 24.0
+margin_right = 120.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement30" parent="VB/VB/PC/Grid" index="29" instance=ExtResource( 3 )]
+margin_left = 120.0
+margin_top = 24.0
+margin_right = 144.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement31" parent="VB/VB/PC/Grid" index="30" instance=ExtResource( 3 )]
+margin_left = 144.0
+margin_top = 24.0
+margin_right = 168.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement32" parent="VB/VB/PC/Grid" index="31" instance=ExtResource( 3 )]
+margin_left = 168.0
+margin_top = 24.0
+margin_right = 192.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement33" parent="VB/VB/PC/Grid" index="32" instance=ExtResource( 3 )]
+margin_left = 192.0
+margin_top = 24.0
+margin_right = 216.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement34" parent="VB/VB/PC/Grid" index="33" instance=ExtResource( 3 )]
+margin_left = 216.0
+margin_top = 24.0
+margin_right = 240.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement35" parent="VB/VB/PC/Grid" index="34" instance=ExtResource( 3 )]
+margin_left = 240.0
+margin_top = 24.0
+margin_right = 264.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement36" parent="VB/VB/PC/Grid" index="35" instance=ExtResource( 3 )]
+margin_left = 264.0
+margin_top = 24.0
+margin_right = 288.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement37" parent="VB/VB/PC/Grid" index="36" instance=ExtResource( 3 )]
+margin_left = 288.0
+margin_top = 24.0
+margin_right = 312.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement38" parent="VB/VB/PC/Grid" index="37" instance=ExtResource( 3 )]
+margin_left = 312.0
+margin_top = 24.0
+margin_right = 336.0
+margin_bottom = 48.0
+
+[node name="MinesweeperElement39" parent="VB/VB/PC/Grid" index="38" instance=ExtResource( 3 )]
+margin_left = 336.0
+margin_top = 24.0
+margin_right = 360.0
+margin_bottom = 48.0
+
+[node name="VB" type="VBoxContainer" parent="VB/VB" index="1"]
+margin_top = 252.0
+margin_right = 600.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_constants/separation = 24
+alignment = 1
+
+[node name="Control" type="Control" parent="VB/VB/VB" index="0"]
+margin_right = 600.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 3
+
+[node name="StatusLabel" type="Label" parent="VB/VB/VB/Control" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+text = "What"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="Button" parent="VB/VB/VB" index="1"]
+margin_left = 236.0
+margin_top = 24.0
+margin_right = 364.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Restart"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]

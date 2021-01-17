@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/windows/base/ProgramPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/windows/tic_tac_toe/TicTacToeElement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/windows/TicTacToe.gd" type="Script" id=3]
+
+[node name="TicTacToe" instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -182.0
+margin_top = -112.0
+margin_right = 182.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 364, 256 )
+script = ExtResource( 3 )
+
+[node name="PC" parent="VB" index="0"]
+margin_right = 364.0
+
+[node name="HB" parent="VB/PC" index="0"]
+margin_right = 357.0
+
+[node name="MinimizeButton" parent="VB/PC/HB" index="1"]
+margin_left = 306.0
+margin_right = 322.0
+
+[node name="CloseButton" parent="VB/PC/HB" index="2"]
+margin_left = 334.0
+margin_right = 350.0
+
+[node name="HB" type="HBoxContainer" parent="VB" index="1"]
+margin_top = 34.0
+margin_right = 364.0
+margin_bottom = 256.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PC" type="PanelContainer" parent="VB/HB" index="0"]
+margin_left = 13.0
+margin_top = 8.0
+margin_right = 219.0
+margin_bottom = 214.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Grid" type="GridContainer" parent="VB/HB/PC" index="0"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 199.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 192, 192 )
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 3
+
+[node name="TicTacToeElement" parent="VB/HB/PC/Grid" index="0" instance=ExtResource( 2 )]
+
+[node name="TicTacToeElement2" parent="VB/HB/PC/Grid" index="1" instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_right = 128.0
+
+[node name="TicTacToeElement3" parent="VB/HB/PC/Grid" index="2" instance=ExtResource( 2 )]
+margin_left = 128.0
+margin_right = 192.0
+
+[node name="TicTacToeElement4" parent="VB/HB/PC/Grid" index="3" instance=ExtResource( 2 )]
+margin_top = 64.0
+margin_bottom = 128.0
+
+[node name="TicTacToeElement5" parent="VB/HB/PC/Grid" index="4" instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 128.0
+margin_bottom = 128.0
+
+[node name="TicTacToeElement6" parent="VB/HB/PC/Grid" index="5" instance=ExtResource( 2 )]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+
+[node name="TicTacToeElement7" parent="VB/HB/PC/Grid" index="6" instance=ExtResource( 2 )]
+margin_top = 128.0
+margin_bottom = 192.0
+
+[node name="TicTacToeElement8" parent="VB/HB/PC/Grid" index="7" instance=ExtResource( 2 )]
+margin_left = 64.0
+margin_top = 128.0
+margin_right = 128.0
+margin_bottom = 192.0
+
+[node name="TicTacToeElement9" parent="VB/HB/PC/Grid" index="8" instance=ExtResource( 2 )]
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 192.0
+margin_bottom = 192.0
+
+[node name="VB" type="VBoxContainer" parent="VB/HB" index="1"]
+margin_left = 223.0
+margin_right = 351.0
+margin_bottom = 222.0
+custom_constants/separation = 24
+alignment = 1
+
+[node name="Control" type="Control" parent="VB/HB/VB" index="0"]
+margin_top = 89.0
+margin_right = 128.0
+margin_bottom = 89.0
+
+[node name="StatusLabel" type="Label" parent="VB/HB/VB/Control" index="0"]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 128, 0 )
+text = "You win!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="Button" parent="VB/HB/VB" index="1"]
+margin_top = 113.0
+margin_right = 128.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 128, 0 )
+size_flags_horizontal = 4
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]

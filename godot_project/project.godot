@@ -9,26 +9,62 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TextureRect",
+"class": "classMinesweeperElement",
+"language": "GDScript",
+"path": "res://src/windows/minesweeper/MinesweeperElement.gd"
+}, {
+"base": "Reference",
+"class": "classMinigameStat",
+"language": "GDScript",
+"path": "res://src/autoload/MinigameStat.gd"
+}, {
 "base": "Reference",
 "class": "classProgram",
 "language": "GDScript",
 "path": "res://src/autoload/Program.gd"
 }, {
+"base": "Node",
+"class": "classSettingsTab",
+"language": "GDScript",
+"path": "res://src/windows/settings/SettingsTab.gd"
+}, {
 "base": "TextureRect",
 "class": "classTicTacToeElement",
 "language": "GDScript",
-"path": "res://src/tic_tac_toe/TicTacToeElement.gd"
+"path": "res://src/windows/tic_tac_toe/TicTacToeElement.gd"
+}, {
+"base": "Reference",
+"class": "classUser",
+"language": "GDScript",
+"path": "res://src/autoload/User.gd"
+}, {
+"base": "Viewport",
+"class": "classVirtualViewport",
+"language": "GDScript",
+"path": "res://src/windows/VirtualViewport.gd"
+}, {
+"base": "Panel",
+"class": "classWindow",
+"language": "GDScript",
+"path": "res://src/windows/base/ProgramPanel.gd"
 } ]
 _global_script_class_icons={
+"classMinesweeperElement": "",
+"classMinigameStat": "",
 "classProgram": "",
-"classTicTacToeElement": ""
+"classSettingsTab": "",
+"classTicTacToeElement": "",
+"classUser": "",
+"classVirtualViewport": "",
+"classWindow": ""
 }
 
 [application]
 
 config/name="Supreme Dev OS"
 config/description="An out-of-the-box development environment for creating games in Godot."
-run/main_scene="res://src/Startup.tscn"
+run/main_scene="res://src/Desktop.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -64,6 +100,11 @@ restart={
 confirm={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+ ]
+}
+RMB={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
